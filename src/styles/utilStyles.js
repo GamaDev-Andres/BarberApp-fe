@@ -54,4 +54,10 @@ export const Button = styled.button`
   :hover {
     transform: scale(1.01);
   }
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    ${flex()};
+    gap: 10px;
+  }
 `;

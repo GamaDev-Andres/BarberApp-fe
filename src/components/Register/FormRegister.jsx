@@ -1,11 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { ParrafoAvisoRegister } from "../Login/styles";
 import { ContainerFormRegister, MessageError } from "./styles";
 import { validateSesion } from "../../helpers/validateForm";
-const FormRegister = () => {
+import contextAuth from "../../contexts/contextAuth/ContextAuth";
+import SpinnerSmall from "../Spinner/SpinnerSmall";
+
+const FormRegister = ({ isEmpleado }) => {
   const {
     reset,
     register,
@@ -13,13 +16,15 @@ const FormRegister = () => {
     watch,
     formState: { errors },
   } = useForm();
-
   const password = useRef({});
+  const [loading, setLoading] = useState(false);
+  const { startRegister } = useContext(contextAuth);
   password.current = watch("password", "");
-  console.log(password);
-  const mySubmit = (data) => {
-    console.log(data);
-    console.log(errors);
+
+  const mySubmit = async (data) => {
+    setLoading(true);
+    await startRegister(data, isEmpleado ? "empleado" : "user");
+    setLoading(false);
     reset();
   };
   return (
@@ -63,7 +68,6 @@ const FormRegister = () => {
         {errors.password && (
           <MessageError>{errors.password.message}</MessageError>
         )}
-
         <ContainerInput>
           <label htmlFor="confirm-password">confirmar contraseña</label>
           <input
@@ -82,7 +86,10 @@ const FormRegister = () => {
           <MessageError>{errors.confirmPassword.message}</MessageError>
         )}
 
-        <Button type="submit">Registrarse</Button>
+        <Button disabled={loading} type="submit">
+          {loading && <SpinnerSmall />}{" "}
+          {isEmpleado ? "Registrar empleado" : "Registrar"}
+        </Button>
         <ParrafoAvisoRegister>
           Ya tienes cuenta😁? <Link to="/login">Ingresa aquí!</Link>
         </ParrafoAvisoRegister>
