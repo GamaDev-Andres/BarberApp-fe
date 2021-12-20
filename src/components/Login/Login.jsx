@@ -11,10 +11,10 @@ const Login = () => {
   return (
     <>
       <ContainerLogin>
-        <Helmet>
+        {/* <Helmet>
           <title>BarberApp|Login</title>
           <meta name="description" content="pagína para logearse" />
-        </Helmet>
+        </Helmet> */}
         <ContainerCabecera>
           <TitleLogin>{isEmpleado ? "Login Empleado" : "Login"}</TitleLogin>
           <ButtonAdmin onClick={() => setIsEmpleado(!isEmpleado)} bgr>

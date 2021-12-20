@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { Navigate, Outlet, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import contextAuth from "../contexts/contextAuth/ContextAuth";
 
-const PrivateRoute = ({ element: Component, ...rest }) => {
+const PrivateRoute = () => {
   const { token } = useContext(contextAuth);
+  console.log("??");
+
   return token ? <Outlet /> : <Navigate to="/login" />;
 };
 

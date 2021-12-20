@@ -4,6 +4,7 @@ import contextAuth from "../contexts/contextAuth/ContextAuth";
 
 const PublicRoute = () => {
   const { token } = useContext(contextAuth);
+  console.log("??");
   return !token ? <Outlet /> : <Navigate to="/" />;
 };
 

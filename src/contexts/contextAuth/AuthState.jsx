@@ -3,14 +3,20 @@ import types from "../../types/types";
 import authReducer from "./AuthReducer";
 import contextAuth from "./ContextAuth";
 import { fetchSinToken, fetchToken } from "../../helpers/peticiones";
-import { handleErrors } from "../../helpers/handleErrors";
 import Swal from "sweetalert2";
+import {
+  getUrlLoginEmpleado,
+  getUrlLoginUser,
+  getUrlNewEmpleado,
+  getUrlNewUser,
+  getUrlRefresh,
+  getUrlValidAdmin,
+} from "../../helpers/getUrls";
 
 const initialState = {
   token: null,
   user: {},
 };
-const base = import.meta.env.VITE_REACT_APP_URL_BASE;
 
 const AuthState = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -23,7 +29,7 @@ const AuthState = ({ children }) => {
   }, []);
 
   const refreshToken = async () => {
-    const url = base + "/api/refresh";
+    const url = getUrlRefresh();
     const res = await fetchToken(url);
     const resjson = await res.json();
     if (!resjson.ok) {
@@ -34,15 +40,24 @@ const AuthState = ({ children }) => {
           "error"
         );
       }
+      setNewToken();
+
       localStorage.clear();
-    } else {
+      return;
+    }
+    if (user.id !== resjson.user.id) {
       loginUser(resjson);
+    } else {
+      setNewToken(resjson.token);
     }
   };
 
+  const setNewToken = (token = "") => {
+    dispatch({ type: types.authRefreshToken, payload: token });
+  };
+
   const startRegister = useCallback(async (data, type) => {
-    const url =
-      base + (type === "user" ? "/api/users/new" : "/api/empleados/new");
+    const url = type === "user" ? getUrlNewUser() : getUrlNewEmpleado();
     try {
       const res = await fetchSinToken(url, data, "POST");
       const resjson = await res.json();
@@ -57,21 +72,21 @@ const AuthState = ({ children }) => {
       console.log(error);
     }
   }, []);
+
   const loginUser = useCallback((data) => {
-    const { token, ok, user } = data;
+    const { token, user } = data;
     localStorage.setItem("token", token);
     dispatch({
       type: types.authLogin,
       payload: { token, user },
     });
   }, []);
+
   const startLogin = useCallback(async (data, type) => {
-    const url =
-      type === "empleado" ? base + "/api/empleados" : base + "/api/users";
+    const url = type === "empleado" ? getUrlLoginEmpleado() : getUrlLoginUser();
     try {
       const res = await fetchSinToken(url, data, "POST");
       const resjson = await res.json();
-      console.log(resjson);
       if (!resjson.ok) {
         Swal.fire("Error", resjson.msg, "error");
       } else {
@@ -83,7 +98,7 @@ const AuthState = ({ children }) => {
   }, []);
 
   const validarAdmin = useCallback(async (data) => {
-    const url = base + "/api/admin";
+    const url = getUrlValidAdmin();
     const res = await fetchSinToken(url, data, "POST");
     const resjson = await res.json();
     if (!resjson.ok) {

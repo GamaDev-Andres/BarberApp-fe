@@ -8,6 +8,11 @@ const authReducer = (state, action) => {
         user: action.payload.user,
         token: action.payload.token,
       };
+    case types.authRefreshToken:
+      return {
+        ...state,
+        token: action.payload.token,
+      };
     default:
       return state;
   }

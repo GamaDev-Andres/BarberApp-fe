@@ -18,7 +18,6 @@ export const FormLogin = ({ isEmpleado }) => {
   const { startLogin } = useContext(contextAuth);
   const mySubmit = async (data) => {
     const type = isEmpleado ? "empleado" : "user";
-    console.log(data);
     setLoading(true);
     await startLogin(data, type);
     setLoading(false);

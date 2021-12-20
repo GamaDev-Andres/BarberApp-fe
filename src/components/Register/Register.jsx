@@ -24,10 +24,10 @@ const Register = () => {
   return (
     <>
       <ContainerRegister>
-        <Helmet>
+        {/* <Helmet>
           <title>BarberApp|Register</title>
           <meta name="description" content="pagína para registrarse" />
-        </Helmet>
+        </Helmet> */}
         <ContainerCabecera>
           <TitleRegister>
             {formAdmin

@@ -1,27 +1,66 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "../components/Home/Home";
-// import HomeSesion from "../components/HomeSesion/HomeSesion";
-// import Login from "../components/Login/Login";
-// import Register from "../components/Register/Register";
+
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+import Spinner from "../components/Spinner/Spinner";
+import contextAuth from "../contexts/contextAuth/ContextAuth";
+import PrivateRouteUser from "./PrivateRouteUser";
+
+const PageNotFound = React.lazy(() =>
+  import("../components/pageNotFound/PageNotFound")
+);
+const HomeEmpleado = React.lazy(() =>
+  import("../components/HomeEmpleado/HomeEmpleado")
+);
+const HomePresentation = React.lazy(() =>
+  import("../components/HomePresentation/HomePresentation")
+);
+const Barberos = React.lazy(() => import("../components/Barberos/Barberos"));
+const ProfileBarbero = React.lazy(() =>
+  import("../components/ProfileBarbero/ProfileBarbero")
+);
+const CitasUsers = React.lazy(() =>
+  import("../components/CitasUsers/CitasUsers")
+);
+const CitasBarbero = React.lazy(() =>
+  import("../components/CitasBarbero/CitasBarbero")
+);
+
 const Home = React.lazy(() => import("../components/Home/Home"));
 const HomeSesion = React.lazy(() =>
   import("../components/HomeSesion/HomeSesion")
 );
 const Login = React.lazy(() => import("../components/Login/Login"));
 const Register = React.lazy(() => import("../components/Register/Register"));
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
-import PageNotFound from "../components/pageNotFound/PageNotFound";
-import Spinner from "../components/Spinner/Spinner";
 
 const AppRouter = () => {
+  const {
+    user: { type },
+    token,
+  } = useContext(contextAuth);
+  const isUser = type === "user";
+
+  if (token === null) {
+    return <Spinner />;
+  }
+
   return (
     <BrowserRouter>
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route element={<PrivateRoute />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={isUser ? <Home /> : <HomeEmpleado />}>
+              <Route index element={<HomePresentation />} />
+              <Route path="/barberos/:id" element={<ProfileBarbero />} />
+              <Route
+                path="/citas"
+                element={isUser ? <CitasUsers /> : <CitasBarbero />}
+              />
+              <Route element={<PrivateRouteUser />}>
+                <Route path="/barberos" element={<Barberos />} />
+              </Route>
+            </Route>
           </Route>
 
           <Route element={<PublicRoute />}>
