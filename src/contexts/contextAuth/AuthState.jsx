@@ -96,7 +96,10 @@ const AuthState = ({ children }) => {
       console.log(error);
     }
   }, []);
-
+  const signOutSesion = useCallback(() => {
+    localStorage.removeItem("token");
+    dispatch({ type: types.authLogout });
+  }, []);
   const validarAdmin = useCallback(async (data) => {
     const url = getUrlValidAdmin();
     const res = await fetchSinToken(url, data, "POST");
@@ -117,6 +120,7 @@ const AuthState = ({ children }) => {
         startRegister,
         startLogin,
         validarAdmin,
+        signOutSesion,
       }}
     >
       {children}

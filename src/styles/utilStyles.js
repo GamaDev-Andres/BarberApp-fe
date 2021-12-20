@@ -13,7 +13,10 @@ export const theme = {
     claro: "#eee",
     oscuro: "#1E1E1E",
     grisClaro: "rgb(190, 190, 190)",
+    azulOscuro: "#0b235a",
     azul: "#0D2C76",
+    azulClaro: "#1844a8",
+    rojoOscuro: "#a31a18",
     rojo: "#E72622",
   },
 };

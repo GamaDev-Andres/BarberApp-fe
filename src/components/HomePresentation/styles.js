@@ -1,5 +1,65 @@
 import styled from "styled-components";
+import { flex, grid } from "../../styles/utilStyles";
+import imgPresentation from "../../../assets/img_fondo.jpg";
 
 export const ContainerHomePresentacion = styled.main`
   flex-grow: 1;
+  .prueba {
+    height: 100vh;
+  }
+  /* ${flex("column", "")} */
+`;
+export const HeaderPresentationStyled = styled.header`
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-image: url(${imgPresentation});
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  ${flex()};
+  position: relative;
+  &::after {
+    content: "";
+    max-width: 100%;
+    display: block;
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+`;
+
+export const ContainerMsgBienvenida = styled.div`
+  ${flex("column")};
+  width: min(550px, 90%);
+  color: ${(props) => props.theme.colors.claro};
+  z-index: 1;
+  backdrop-filter: blur(5px);
+  border: 1px solid ${(props) => props.theme.colors.azul};
+
+  padding: 1rem;
+  border-radius: 1rem;
+  gap: 1rem;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    border: 1px solid ${(props) => props.theme.colors.rojo};
+    backdrop-filter: blur(10px);
+
+    h2 {
+      color: ${(props) => props.theme.colors.rojo};
+      border-bottom: 3px solid ${(props) => props.theme.colors.rojo};
+    }
+  }
+  p {
+    text-align: center;
+  }
+  h2 {
+    transition: all 0.5s ease-in-out;
+    border-bottom: 3px solid ${(props) => props.theme.colors.azul};
+    padding-bottom: 0.5rem;
+    color: ${(props) => props.theme.colors.azulClaro};
+  }
 `;

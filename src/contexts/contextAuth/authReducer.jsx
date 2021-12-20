@@ -13,6 +13,12 @@ const authReducer = (state, action) => {
         ...state,
         token: action.payload.token,
       };
+    case types.authLogout:
+      console.log("en reducer");
+      return {
+        token: "",
+        user: {},
+      };
     default:
       return state;
   }
