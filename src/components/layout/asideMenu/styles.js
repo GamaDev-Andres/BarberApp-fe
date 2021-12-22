@@ -15,11 +15,11 @@ export const Aside = styled.aside`
     props.openAside
       ? css`
           transform: translateX(0%);
-          z-index: 3;
+          z-index: 9999;
         `
       : css`
           transform: translateX(-100%);
-          z-index: -1;
+          /* z-index: 1; */
         `}
   width: min(400px, 90%);
   background-color: ${(props) => props.theme.colors.azul};

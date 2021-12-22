@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flex, grid } from "../../styles/utilStyles";
+import { flex, grid, media } from "../../styles/utilStyles";
 import imgPresentation from "../../../assets/img_fondo.jpg";
 
 export const ContainerHomePresentacion = styled.main`
@@ -7,7 +7,6 @@ export const ContainerHomePresentacion = styled.main`
   .prueba {
     height: 100vh;
   }
-  /* ${flex("column", "")} */
 `;
 export const HeaderPresentationStyled = styled.header`
   width: 100%;
@@ -61,5 +60,45 @@ export const ContainerMsgBienvenida = styled.div`
     border-bottom: 3px solid ${(props) => props.theme.colors.azul};
     padding-bottom: 0.5rem;
     color: ${(props) => props.theme.colors.azulClaro};
+  }
+`;
+export const ContainerCards = styled.div`
+  ${grid(1)};
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  ${media.tablet} {
+    grid-template-columns: 1fr 1fr;
+  }
+  ${media.laptop} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`;
+export const ContainerCard = styled.div`
+  ${flex("column")};
+  gap: 1rem;
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.fondo};
+  color: ${(props) => props.theme.colors.oscuro};
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid ${(props) => props.theme.colors.azul};
+
+  h3 {
+    color: ${(props) => props.theme.colors.azul};
+    font-size: 1.6rem;
+  }
+  div {
+    ${flex("column")};
+    gap: 10px;
+    /* padding: 0.5rem; */
+  }
+`;
+export const ContainerImgCard = styled.div`
+  img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
   }
 `;

@@ -4,7 +4,6 @@ import contextAuth from "../contexts/contextAuth/ContextAuth";
 
 const PrivateRoute = () => {
   const { token } = useContext(contextAuth);
-  console.log("??");
 
   return token ? <Outlet /> : <Navigate to="/login" />;
 };

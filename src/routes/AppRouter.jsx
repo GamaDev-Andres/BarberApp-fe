@@ -50,7 +50,7 @@ const AppRouter = () => {
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route element={<PrivateRoute />}>
-            <Route path="/" element={isUser ? <Home /> : <HomeEmpleado />}>
+            <Route path="/" element={<Home />}>
               <Route index element={<HomePresentation />} />
               <Route path="/barberos/:id" element={<ProfileBarbero />} />
               <Route
