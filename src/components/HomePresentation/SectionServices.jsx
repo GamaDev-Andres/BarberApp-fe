@@ -1,12 +1,9 @@
 import React from "react";
 import CardService from "./CardService";
-import { ContainerCards } from "./styles";
+import { ContainerCards, TitleSection } from "./styles";
 import imgCitas from "../../../assets/citas.png";
 import imgEditar from "../../../assets/editar.png";
 import imgCalifica from "../../../assets/califica.jpg";
-import { TitleSesion } from "../HomeSesion/styles";
-import { TitleLogin } from "../Login/styles";
-import { TitleRegister } from "../Register/styles";
 const arrServices = [
   {
     title: "Citas 100% personalizadas",
@@ -31,7 +28,7 @@ const arrServices = [
 const SectionServices = () => {
   return (
     <section>
-      <TitleRegister as="h2">Nuestros servicios</TitleRegister>
+      <TitleSection>Nuestros servicios</TitleSection>
       <ContainerCards>
         {arrServices.map((service) => (
           <CardService key={service.title} service={service} />

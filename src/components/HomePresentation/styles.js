@@ -4,9 +4,6 @@ import imgPresentation from "../../../assets/img_fondo.jpg";
 
 export const ContainerHomePresentacion = styled.main`
   flex-grow: 1;
-  .prueba {
-    height: 100vh;
-  }
 `;
 export const HeaderPresentationStyled = styled.header`
   width: 100%;
@@ -67,12 +64,7 @@ export const ContainerCards = styled.div`
   width: 100%;
   padding: 1rem;
   gap: 1rem;
-  ${media.tablet} {
-    grid-template-columns: 1fr 1fr;
-  }
-  ${media.laptop} {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 `;
 export const ContainerCard = styled.div`
   ${flex("column")};
@@ -91,7 +83,6 @@ export const ContainerCard = styled.div`
   div {
     ${flex("column")};
     gap: 10px;
-    /* padding: 0.5rem; */
   }
 `;
 export const ContainerImgCard = styled.div`
@@ -101,4 +92,9 @@ export const ContainerImgCard = styled.div`
     aspect-ratio: 1/1;
     border-radius: 1rem;
   }
+`;
+export const TitleSection = styled.h2`
+  color: ${(props) => props.theme.colors.azul};
+  font-size: 1.6rem;
+  margin-top: 1rem;
 `;

@@ -10,6 +10,8 @@ import {
   getUrlNewEmpleado,
   getUrlNewUser,
   getUrlRefresh,
+  getUrlUpdateCliente,
+  getUrlUpdateEmpleado,
   getUrlValidAdmin,
 } from "../../helpers/getUrls";
 
@@ -40,11 +42,12 @@ const AuthState = ({ children }) => {
           "error"
         );
       }
-      setNewToken();
 
+      setNewToken();
       localStorage.clear();
       return;
     }
+    console.log(resjson.user);
     if (user.id !== resjson.user.id) {
       loginUser(resjson);
     } else {
@@ -111,6 +114,32 @@ const AuthState = ({ children }) => {
       return true;
     }
   }, []);
+
+  const editarUser = useCallback(
+    async (data) => {
+      const url =
+        user.type === "empleado"
+          ? getUrlUpdateEmpleado(user.id)
+          : getUrlUpdateCliente(user.id);
+
+      try {
+        const res = await fetchToken(url, data, "PUT");
+        const resjson = await res.json();
+        console.log(resjson);
+        if (resjson.ok) {
+          console.log("entro");
+          console.log(data);
+          dispatch({ type: types.userEditNombre, payload: data });
+          console.log("salgo");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token ,
+    //cambiara el state , por lo tanto deberia volver a memorizarse la funcion
+    [token]
+  );
   return (
     <contextAuth.Provider
       value={{
@@ -121,6 +150,7 @@ const AuthState = ({ children }) => {
         startLogin,
         validarAdmin,
         signOutSesion,
+        editarUser,
       }}
     >
       {children}

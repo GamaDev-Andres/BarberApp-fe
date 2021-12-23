@@ -14,10 +14,16 @@ const authReducer = (state, action) => {
         token: action.payload.token,
       };
     case types.authLogout:
-      console.log("en reducer");
       return {
         token: "",
         user: {},
+      };
+    case types.userEditNombre:
+      console.log(action.payload);
+      console.log("en reducer");
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload },
       };
     default:
       return state;

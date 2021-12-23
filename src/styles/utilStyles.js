@@ -53,7 +53,7 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease;
   :hover {
     transform: scale(1.01);
   }
@@ -63,4 +63,7 @@ export const Button = styled.button`
     ${flex()};
     gap: 10px;
   }
+`;
+export const H1 = styled.h1`
+  cursor: pointer;
 `;

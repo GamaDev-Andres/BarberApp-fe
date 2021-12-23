@@ -1,25 +1,29 @@
-import React, { useContext } from "react";
-import contextAuth from "../../../contexts/contextAuth/ContextAuth";
-import { Button } from "../../../styles/utilStyles";
-import { ButtonExit, ButtonMenu, Header } from "./styles";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { H1 } from "../../../styles/utilStyles";
+import ContainerSettings from "./ContainerSettings";
+import { ButtonMenu, Header } from "./styles";
 
 const HeaderHome = ({ setOpenAside }) => {
-  const { signOutSesion } = useContext(contextAuth);
-  const hanleSignOut = () => {
-    signOutSesion();
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/");
   };
+
   return (
     <Header>
-      <ButtonMenu
-        onClick={() => setOpenAside((openAside) => !openAside)}
-        title="Abrir menu"
-      >
-        <i className="fas fa-bars"></i>
-      </ButtonMenu>
-      <h1>BarberApp</h1>
-      <ButtonExit onClick={hanleSignOut} title="Cerrar sesion">
-        <i className="fas fa-sign-out-alt"></i>
-      </ButtonExit>
+      <div>
+        <ButtonMenu
+          onClick={() => setOpenAside((openAside) => !openAside)}
+          title="Abrir menu"
+        >
+          <i className="fas fa-bars"></i>
+        </ButtonMenu>
+        <H1 onClick={handleRedirect}>BarberApp</H1>
+      </div>
+
+      <ContainerSettings />
     </Header>
   );
 };

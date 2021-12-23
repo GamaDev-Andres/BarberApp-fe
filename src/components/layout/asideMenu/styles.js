@@ -96,6 +96,10 @@ export const ItemLink = styled(NavLink)`
     }
   }
 `;
+export const ButtonSignOutAside = styled(ItemLink)`
+  cursor: pointer;
+  background-color: ${(props) => props.theme.colors.azul};
+`;
 export const ContainerLinks = styled.div`
   ${flex("column")};
   margin-top: 1rem;

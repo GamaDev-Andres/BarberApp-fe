@@ -8,7 +8,6 @@ const HomePresentation = () => {
     <ContainerHomePresentacion>
       <HeaderPresentation />
       <SectionServices />
-      <div className="prueba"></div>
     </ContainerHomePresentacion>
   );
 };
