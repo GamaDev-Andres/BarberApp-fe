@@ -45,6 +45,13 @@ export const ContainerInput = styled.div`
   input {
     width: 100%;
   }
+  textarea {
+    width: 100%;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    outline: none;
+    padding: 0.5rem;
+  }
 `;
 export const Button = styled.button`
   background-color: ${(props) =>

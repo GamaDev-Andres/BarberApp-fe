@@ -1,0 +1,15 @@
+import types from "../../types/types";
+
+const usersReducer = (state, action) => {
+  switch (action.type) {
+    case types.userSetBarberos:
+      return {
+        ...state,
+        barberos: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default usersReducer;

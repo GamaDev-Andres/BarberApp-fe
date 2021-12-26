@@ -4,5 +4,6 @@ const types = {
   authRefreshToken: "refresh token",
 
   userEditNombre: "editando nombre cliente o barbero",
+  userSetBarberos: "seteando barberos",
 };
 export default types;

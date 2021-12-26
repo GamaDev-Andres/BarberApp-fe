@@ -7,6 +7,9 @@ import Spinner from "../components/Spinner/Spinner";
 import contextAuth from "../contexts/contextAuth/ContextAuth";
 import PrivateRouteUser from "./PrivateRouteUser";
 
+const CitasUsers = React.lazy(() =>
+  import("../components/CitasUsers/CitasUsers")
+);
 const PageNotFound = React.lazy(() =>
   import("../components/pageNotFound/PageNotFound")
 );
@@ -20,9 +23,7 @@ const Barberos = React.lazy(() => import("../components/Barberos/Barberos"));
 const ProfileBarbero = React.lazy(() =>
   import("../components/ProfileBarbero/ProfileBarbero")
 );
-const CitasUsers = React.lazy(() =>
-  import("../components/CitasUsers/CitasUsers")
-);
+const NewCita = React.lazy(() => import("../components/CitasUsers/NewCita"));
 const CitasBarbero = React.lazy(() =>
   import("../components/CitasBarbero/CitasBarbero")
 );
@@ -59,6 +60,7 @@ const AppRouter = () => {
               />
               <Route element={<PrivateRouteUser />}>
                 <Route path="/barberos" element={<Barberos />} />
+                <Route path="/newcita" element={<NewCita />} />
               </Route>
             </Route>
           </Route>

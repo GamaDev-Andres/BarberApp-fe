@@ -19,8 +19,6 @@ const authReducer = (state, action) => {
         user: {},
       };
     case types.userEditNombre:
-      console.log(action.payload);
-      console.log("en reducer");
       return {
         ...state,
         user: { ...state.user, ...action.payload },

@@ -125,12 +125,8 @@ const AuthState = ({ children }) => {
       try {
         const res = await fetchToken(url, data, "PUT");
         const resjson = await res.json();
-        console.log(resjson);
         if (resjson.ok) {
-          console.log("entro");
-          console.log(data);
           dispatch({ type: types.userEditNombre, payload: data });
-          console.log("salgo");
         }
       } catch (error) {
         console.log(error);
