@@ -14,3 +14,4 @@ export const getUrlLoginEmpleado = () => base + "/api/empleados";
 export const getUrlValidAdmin = () => base + "/api/admin";
 
 export const getUrlBarberos = () => base + "/api/empleados";
+export const getUrlCitas = () => base + "/api/cita/";

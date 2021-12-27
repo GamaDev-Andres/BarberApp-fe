@@ -1,7 +1,13 @@
 import React from "react";
+import ListOfCitas from "./ListOfCitas";
+import { ContainerCitasUsers } from "./styles";
 
 const CitasUsers = () => {
-  return <div></div>;
+  return (
+    <ContainerCitasUsers>
+      <ListOfCitas />
+    </ContainerCitasUsers>
+  );
 };
 
 export default CitasUsers;

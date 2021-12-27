@@ -53,11 +53,13 @@ export const ContainerAside = styled.div`
     props.openAside
       ? css`
           opacity: 1;
-          z-index: 2;
+
+          z-index: 3;
         `
       : css`
           opacity: 0;
-          z-index: -1;
+          visibility: hidden;
+          /* z-index: -1; */
         `};
 `;
 export const ItemLink = styled(NavLink)`

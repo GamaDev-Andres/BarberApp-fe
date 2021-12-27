@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import contextCitas from "../../contexts/contextCitas/contextCitas";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 import { dateFormat } from "../../helpers/dateFormat";
 import { validateCita } from "../../helpers/validateForm";
@@ -9,12 +10,6 @@ import Spinner from "../Spinner/Spinner";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
 import { ContainerFormCitas } from "./styles";
 
-const initialState = {
-  barbero: "",
-  fecha: dateFormat(),
-  hora: new Date().toLocaleTimeString(),
-  observaciones: "",
-};
 const FormCita = () => {
   const {
     reset,
@@ -31,7 +26,8 @@ const FormCita = () => {
   // const [objCita, setObjCita] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [citaLoading, setCitaLoading] = useState(false);
-  const { barberos, getBarberos, createCita } = useContext(contextUsers);
+  const { barberos, getBarberos } = useContext(contextUsers);
+  const { createCita } = useContext(contextCitas);
   useEffect(() => {
     const getBarberosEffect = async () => {
       if (!barberos) {

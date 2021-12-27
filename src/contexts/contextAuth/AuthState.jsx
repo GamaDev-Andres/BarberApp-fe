@@ -115,27 +115,6 @@ const AuthState = ({ children }) => {
     }
   }, []);
 
-  const editarUser = useCallback(
-    async (data) => {
-      const url =
-        user.type === "empleado"
-          ? getUrlUpdateEmpleado(user.id)
-          : getUrlUpdateCliente(user.id);
-
-      try {
-        const res = await fetchToken(url, data, "PUT");
-        const resjson = await res.json();
-        if (resjson.ok) {
-          dispatch({ type: types.userEditNombre, payload: data });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token ,
-    //cambiara el state , por lo tanto deberia volver a memorizarse la funcion
-    [token]
-  );
   return (
     <contextAuth.Provider
       value={{
@@ -146,7 +125,6 @@ const AuthState = ({ children }) => {
         startLogin,
         validarAdmin,
         signOutSesion,
-        editarUser,
       }}
     >
       {children}

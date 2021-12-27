@@ -10,6 +10,7 @@ export const Header = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  box-shadow: 2px 2px 3px grey;
   & > div {
     ${flex()}
     gap:10px;

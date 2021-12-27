@@ -5,5 +5,7 @@ const types = {
 
   userEditNombre: "editando nombre cliente o barbero",
   userSetBarberos: "seteando barberos",
+
+  citasGetCitas: "get citas",
 };
 export default types;
