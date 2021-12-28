@@ -1,6 +1,6 @@
 export const fetchToken = (url, data, method = "GET") => {
   const token = localStorage.getItem("token") || "";
-  if (method === "GET") {
+  if (method === "GET" || method === "DELETE") {
     return fetch(url, {
       method,
       headers: {

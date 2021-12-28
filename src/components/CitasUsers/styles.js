@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flex, media } from "../../styles/utilStyles";
+import { flex } from "../../styles/utilStyles";
 import { ContainerFormLogin } from "../Login/styles";
 
 export const ContainerNewCitaUsers = styled.main`
@@ -15,17 +15,20 @@ export const ContainerCitasUsers = styled(ContainerNewCitaUsers)`
   width: 100%;
   padding: 1rem;
   display: block;
+  h2 {
+    padding-bottom: 1rem;
+  }
 `;
 export const ContainerFormCitas = styled(ContainerFormLogin)`
   width: min(450px, 90%);
   background-color: ${(props) => props.theme.colors.claro};
   padding: 1rem;
   border-radius: 1rem;
-
-  /* height: |; */
 `;
 export const ContainerCitas = styled.div`
-  ${flex("column", "flex-start", "stretch")};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: min-content;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -41,14 +44,9 @@ export const ContainerCita = styled.article`
   position: relative;
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};
-  min-height: 75px;
   & > div {
     ${flex("column")};
-    gap: 10px;
     align-items: stretch;
-    ${media.tablet} {
-      flex-direction: row;
-    }
   }
 
   h3 {
@@ -71,8 +69,7 @@ export const ContainerFotoCita = styled.div`
 `;
 export const ContainerInformacionCita = styled.div`
   background-color: white;
-  flex-grow: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   ${flex("column", "flex-start", "stretch")};
 `;
 export const ContainerActionsCita = styled.div`
@@ -88,7 +85,45 @@ export const ContainerActionsCita = styled.div`
     font-size: 1.2rem;
   }
   &:hover {
-    background-color: grey;
+    background-color: ${(props) => props.theme.colors.grisClaro};
   }
   width: min-content;
+`;
+export const StyledOptionsActionsCita = styled.div`
+  display: block;
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  border: 1px solid ${(props) => props.theme.colors.grisClaro};
+  background-color: ${(props) => props.theme.colors.fondo};
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid ${(props) => props.theme.colors.grisClaro};
+    position: absolute;
+    top: -0.5rem;
+    right: -1px;
+  }
+`;
+export const StyledItemAction = styled.div`
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  /* pointer-events: ${(props) =>
+    props.loading === "true" ? "none" : "auto"}; */
+  transition: all 0.3s ease;
+  border-bottom: 1px solid ${(props) => props.theme.colors.grisClaro};
+  ${flex("row", "flex-start")};
+  gap: 10px;
+  .sk-chase-dot:before {
+    background-color: ${(props) => props.theme.colors.azul};
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.grisClaro};
+    color: ${(props) => props.theme.colors.claro};
+  }
 `;

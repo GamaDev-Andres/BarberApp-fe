@@ -26,7 +26,6 @@ const UsersState = ({ children }) => {
     try {
       const res = await fetchToken(url);
       const resjson = await res.json();
-      console.log(resjson);
       if (!resjson.ok) {
         await Swal.fire("error", resjson.msg, "error");
         return;

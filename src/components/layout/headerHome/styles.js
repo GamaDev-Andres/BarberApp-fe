@@ -17,6 +17,10 @@ export const Header = styled.header`
   }
   h1 {
     color: ${(props) => props.theme.colors.azul};
+    display: block;
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 `;
 export const ButtonMenu = styled(Button)`

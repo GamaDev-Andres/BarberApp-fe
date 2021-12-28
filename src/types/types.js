@@ -7,5 +7,7 @@ const types = {
   userSetBarberos: "seteando barberos",
 
   citasGetCitas: "get citas",
+  citasDeleteCita: "delete cita",
+  // citasAddCita: "agregar cita",
 };
 export default types;

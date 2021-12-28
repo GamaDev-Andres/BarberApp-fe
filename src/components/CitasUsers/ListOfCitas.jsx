@@ -17,18 +17,20 @@ const ListOfCitas = () => {
     };
 
     cargandoCitas();
+    // obtenerBarberos();
   }, []);
 
-  // if (loadingCitas) return <Spinner />;
   return loadingCitas ? (
     <Spinner />
   ) : (
-    <ContainerCitas>
+    <>
       <h2>Mis citas</h2>
-      {citas?.map((cita) => (
-        <Cita key={cita._id} cita={cita} />
-      ))}
-    </ContainerCitas>
+      <ContainerCitas>
+        {citas?.map((cita) => (
+          <Cita key={cita._id} cita={cita} />
+        ))}
+      </ContainerCitas>
+    </>
   );
 };
 

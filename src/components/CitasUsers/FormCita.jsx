@@ -23,11 +23,10 @@ const FormCita = () => {
   const hora = useRef({});
   hora.current = watch("hora", "");
 
-  // const [objCita, setObjCita] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [citaLoading, setCitaLoading] = useState(false);
   const { barberos, getBarberos } = useContext(contextUsers);
-  const { createCita } = useContext(contextCitas);
+  const { createCita, getCitas } = useContext(contextCitas);
   useEffect(() => {
     const getBarberosEffect = async () => {
       if (!barberos) {
@@ -41,7 +40,6 @@ const FormCita = () => {
   }, []);
 
   const mySubmit = async (data) => {
-    console.log("submit");
     const cita = {
       barbero: data.barbero,
       fecha: data.fecha + " " + data.hora,

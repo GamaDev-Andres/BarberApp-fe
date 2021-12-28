@@ -1,20 +1,18 @@
 import React from "react";
 import { Button } from "../../styles/utilStyles";
 import {
-  ContainerActionsCita,
   ContainerCita,
   ContainerFotoCita,
   ContainerInformacionCita,
 } from "./styles";
 import userEmpty from "../../../assets/unnamed.png";
+import ActionsCitas from "./ActionsCitas";
 const Cita = ({ cita }) => {
   const fecha = new Date(cita.fecha).toLocaleString();
   return (
     <ContainerCita>
-      <ContainerActionsCita role="button" tabIndex={0}>
-        <i className="fas fa-ellipsis-h"></i>
-      </ContainerActionsCita>
-      <h3>cita pendiente</h3>
+      <ActionsCitas cita={cita} />
+      <h3>{cita.estado ? "Aceptada" : "Pendiente"}</h3>
       <div>
         <ContainerFotoCita>
           <img src={userEmpty} alt="foto de barbero" />
@@ -23,7 +21,7 @@ const Cita = ({ cita }) => {
         <ContainerInformacionCita>
           <div>
             <strong>Barbero: </strong>
-            <p>juanito de tales</p>
+            <p>{cita.barbero.nombre}</p>
           </div>
           <div>
             <strong>Fecha y Hora: </strong>
@@ -32,10 +30,6 @@ const Cita = ({ cita }) => {
           <div>
             <strong>Observaciones: </strong>
             <p>{cita.observaciones}</p>
-          </div>
-          <div>
-            <strong>Estado: </strong>
-            <p>{cita.estado ? "Aceptada" : "Pendiente"}</p>
           </div>
         </ContainerInformacionCita>
       </div>

@@ -15,3 +15,6 @@ export const getUrlValidAdmin = () => base + "/api/admin";
 
 export const getUrlBarberos = () => base + "/api/empleados";
 export const getUrlCitas = () => base + "/api/cita/";
+
+export const getUrlDeleteCita = (id) => base + `/api/cita/delete/${id}`;
+export const getUrlUpdateCita = (id) => base + `/api/cita/update/${id}`;

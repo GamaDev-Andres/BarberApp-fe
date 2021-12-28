@@ -1,6 +1,11 @@
 import React, { useCallback, useReducer } from "react";
 import Swal from "sweetalert2";
-import { getUrlCitas, getUrlnewCita } from "../../helpers/getUrls";
+import {
+  getUrlCitas,
+  getUrlDeleteCita,
+  getUrlnewCita,
+  getUrlUpdateCita,
+} from "../../helpers/getUrls";
 import { fetchToken } from "../../helpers/peticiones";
 import types from "../../types/types";
 import { citasReducer } from "./citasReducer";
@@ -23,6 +28,7 @@ const CitasState = ({ children }) => {
         await Swal.fire("error", resjson.msg, "error");
         return;
       }
+      await getCitas();
       await Swal.fire("Listo!", resjson.msg, "success");
     } catch (error) {
       console.log(error);
@@ -33,20 +39,51 @@ const CitasState = ({ children }) => {
     try {
       const res = await fetchToken(url);
       const resjson = await res.json();
-      console.log(resjson);
       if (!resjson.ok) {
         Swal.fire("error", resjson.msg, "error");
         return;
       }
-      console.log("antes dispatch");
       dispatch({ type: types.citasGetCitas, payload: resjson.citas });
-      console.log("despues dispatch");
     } catch (error) {
       console.log(error);
     }
   }, []);
+  const deleteCita = useCallback(async (id) => {
+    const url = getUrlDeleteCita(id);
+    try {
+      const res = await fetchToken(url, "", "DELETE");
+      const resjson = await res.json();
+      if (!resjson.ok) {
+        await Swal.fire("error", resjson.msg, "error");
+        return;
+      }
+
+      // await getCitas();
+      deleteCitaState(id);
+      await Swal.fire("Eliminada!", "Tu cita ha sido eliminada.", "success");
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const deleteCitaState = (id) => {
+    dispatch({ type: types.citasDeleteCita, payload: id });
+  };
+  const editCita = useCallback(async (id, data) => {
+    const url = getUrlUpdateCita(id);
+    try {
+      const res = await fetchToken(url, data, "PUT");
+      const resjson = await res.json();
+      console.log(resjson);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
-    <contextCitas.Provider value={{ citas, createCita, getCitas }}>
+    <contextCitas.Provider
+      value={{ citas, createCita, getCitas, deleteCita, editCita }}
+    >
       {children}
     </contextCitas.Provider>
   );
