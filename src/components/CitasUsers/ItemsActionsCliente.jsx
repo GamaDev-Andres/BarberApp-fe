@@ -5,7 +5,7 @@ import SpinnerSmall from "../Spinner/SpinnerSmall";
 import { StyledItemAction } from "./styles";
 
 const ItemsActionsCliente = ({ cita }) => {
-  const { citas, deleteCita } = useContext(contextCitas);
+  const { deleteCita } = useContext(contextCitas);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

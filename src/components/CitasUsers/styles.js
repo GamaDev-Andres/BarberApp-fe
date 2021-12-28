@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { flex } from "../../styles/utilStyles";
 import { ContainerFormLogin } from "../Login/styles";
 
@@ -44,6 +44,16 @@ export const ContainerCita = styled.article`
   position: relative;
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};
+  ${(props) =>
+    props.estado === "aceptada" &&
+    css`
+      border: 2px solid ${(props) => props.theme.colors.azul};
+    `};
+  ${(props) =>
+    props.estado === "rechazada" &&
+    css`
+      border: 2px solid ${(props) => props.theme.colors.rojo};
+    `};
   & > div {
     ${flex("column")};
     align-items: stretch;
@@ -112,8 +122,7 @@ export const StyledItemAction = styled.div`
   cursor: pointer;
   font-size: 14px;
   padding: 5px;
-  /* pointer-events: ${(props) =>
-    props.loading === "true" ? "none" : "auto"}; */
+  pointer-events: ${(props) => (props.loading === "true" ? "none" : "auto")};
   transition: all 0.3s ease;
   border-bottom: 1px solid ${(props) => props.theme.colors.grisClaro};
   ${flex("row", "flex-start")};

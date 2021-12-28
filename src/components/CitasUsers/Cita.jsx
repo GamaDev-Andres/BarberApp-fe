@@ -10,9 +10,9 @@ import ActionsCitas from "./ActionsCitas";
 const Cita = ({ cita }) => {
   const fecha = new Date(cita.fecha).toLocaleString();
   return (
-    <ContainerCita>
+    <ContainerCita estado={cita.estado}>
       <ActionsCitas cita={cita} />
-      <h3>{cita.estado ? "Aceptada" : "Pendiente"}</h3>
+      <h3>{cita.estado}</h3>
       <div>
         <ContainerFotoCita>
           <img src={userEmpty} alt="foto de barbero" />

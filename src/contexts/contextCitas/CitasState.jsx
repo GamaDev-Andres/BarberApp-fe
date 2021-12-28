@@ -69,9 +69,11 @@ const CitasState = ({ children }) => {
   const deleteCitaState = (id) => {
     dispatch({ type: types.citasDeleteCita, payload: id });
   };
+
   const editCita = useCallback(async (id, data) => {
     const url = getUrlUpdateCita(id);
     try {
+      console.log(data);
       const res = await fetchToken(url, data, "PUT");
       const resjson = await res.json();
       console.log(resjson);

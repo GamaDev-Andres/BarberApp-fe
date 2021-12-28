@@ -54,10 +54,7 @@ const AppRouter = () => {
             <Route path="/" element={<Home />}>
               <Route index element={<HomePresentation />} />
               <Route path="/barberos/:id" element={<ProfileBarbero />} />
-              <Route
-                path="/citas"
-                element={isUser ? <CitasUsers /> : <CitasBarbero />}
-              />
+              <Route path="/citas" element={<CitasUsers />} />
               <Route element={<PrivateRouteUser />}>
                 <Route path="/barberos" element={<Barberos />} />
                 <Route path="/newcita" element={<NewCita />} />
