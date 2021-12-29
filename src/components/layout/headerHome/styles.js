@@ -6,7 +6,7 @@ export const Header = styled.header`
   padding: 0.5rem 0;
   background-color: white;
   ${flex("row", "space-between")};
-  z-index: 2;
+  z-index: 3;
   position: sticky;
   top: 0;
   width: 100%;

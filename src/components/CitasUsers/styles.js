@@ -45,6 +45,29 @@ export const ContainerCita = styled.article`
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};
   ${(props) =>
+    props.noDispoinble &&
+    css`
+      cursor: not-allowed;
+      &::after {
+        content: "LA CITA EXPIRO O HA SIDO RECHAZADA.";
+        position: absolute;
+        ${flex()};
+        text-align: center;
+        z-index: 1;
+        padding: 10px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(1px);
+        border-radius: 8px;
+        color: ${(props) => props.theme.colors.claro};
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 1;
+      }
+    `};
+  ${(props) =>
     props.estado === "aceptada" &&
     css`
       border: 2px solid ${(props) => props.theme.colors.azul};
@@ -85,7 +108,9 @@ export const ContainerInformacionCita = styled.div`
 export const ContainerActionsCita = styled.div`
   ${flex()};
   position: absolute;
+  background-color: white;
   cursor: pointer;
+  z-index: 2;
   border-radius: 1rem;
   top: 0.25rem;
   right: 0.5rem;
@@ -93,6 +118,8 @@ export const ContainerActionsCita = styled.div`
   transition: background-color 0.2s linear;
   svg {
     font-size: 1.2rem;
+    width: 1rem;
+    height: 1rem;
   }
   &:hover {
     background-color: ${(props) => props.theme.colors.grisClaro};
@@ -102,6 +129,8 @@ export const ContainerActionsCita = styled.div`
 export const StyledOptionsActionsCita = styled.div`
   display: block;
   position: absolute;
+  z-index: 2;
+
   top: 2rem;
   right: 1rem;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};

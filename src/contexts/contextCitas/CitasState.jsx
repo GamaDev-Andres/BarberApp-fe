@@ -40,7 +40,7 @@ const CitasState = ({ children }) => {
       const res = await fetchToken(url);
       const resjson = await res.json();
       if (!resjson.ok) {
-        Swal.fire("error", resjson.msg, "error");
+        await Swal.fire("error", resjson.msg, "error");
         return;
       }
       dispatch({ type: types.citasGetCitas, payload: resjson.citas });
@@ -58,7 +58,6 @@ const CitasState = ({ children }) => {
         return;
       }
 
-      // await getCitas();
       deleteCitaState(id);
       await Swal.fire("Eliminada!", "Tu cita ha sido eliminada.", "success");
     } catch (error) {
@@ -77,6 +76,12 @@ const CitasState = ({ children }) => {
       const res = await fetchToken(url, data, "PUT");
       const resjson = await res.json();
       console.log(resjson);
+      if (!resjson.ok) {
+        await Swal.fire("error", resjson.msg, "error");
+        return;
+      }
+      await getCitas();
+      await Swal.fire("Listo!", resjson.msg, "success");
     } catch (error) {
       console.log(error);
     }

@@ -9,8 +9,10 @@ import userEmpty from "../../../assets/unnamed.png";
 import ActionsCitas from "./ActionsCitas";
 const Cita = ({ cita }) => {
   const fecha = new Date(cita.fecha).toLocaleString();
+  const Expiracion = new Date(cita.fecha).getTime() - new Date().getTime();
+  const noDispoinble = cita.estado === "rechazada" || Expiracion < 0;
   return (
-    <ContainerCita estado={cita.estado}>
+    <ContainerCita noDispoinble={noDispoinble} estado={cita.estado}>
       <ActionsCitas cita={cita} />
       <h3>{cita.estado}</h3>
       <div>

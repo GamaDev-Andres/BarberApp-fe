@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 import { dateFormat } from "../../helpers/dateFormat";
+import getCitaFormatFromId from "../../helpers/getCitaFormatFromId";
 import { validateCita } from "../../helpers/validateForm";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { MessageError } from "../Register/styles";
@@ -10,7 +12,7 @@ import Spinner from "../Spinner/Spinner";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
 import { ContainerFormCitas } from "./styles";
 
-const FormCita = () => {
+const FormCita = ({ defaultValues }) => {
   const {
     reset,
     register,
@@ -18,15 +20,31 @@ const FormCita = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const fecha = useRef({});
-  fecha.current = watch("fecha", "");
-  const hora = useRef({});
-  hora.current = watch("hora", "");
+
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [citaLoading, setCitaLoading] = useState(false);
+
   const { barberos, getBarberos } = useContext(contextUsers);
-  const { createCita, getCitas } = useContext(contextCitas);
+  const { createCita, editCita } = useContext(contextCitas);
+
+  const fecha = useRef({});
+  const hora = useRef({});
+
+  fecha.current = watch("fecha", "");
+  hora.current = watch("hora", "");
+
+  useEffect(() => {
+    if (id) {
+      reset(defaultValues);
+    }
+    return () => {
+      setLoading(false);
+    };
+  }, [defaultValues, id]);
+
   useEffect(() => {
     const getBarberosEffect = async () => {
       if (!barberos) {
@@ -45,15 +63,23 @@ const FormCita = () => {
       fecha: data.fecha + " " + data.hora,
       observaciones: data.observaciones,
     };
-    setCitaLoading(true);
-    await createCita(cita);
-    setCitaLoading(false);
-    reset();
+    if (id) {
+      setCitaLoading(true);
+      await editCita(id, cita);
+      setCitaLoading(false);
+      reset({});
+      navigate("/newcita");
+    } else {
+      setCitaLoading(true);
+      await createCita(cita);
+      setCitaLoading(false);
+    }
+    reset({});
   };
   if (loading) return <Spinner />;
   return (
     <ContainerFormCitas>
-      <h2>Agenda tu cita</h2>
+      <h2>{id ? "Edita tu cita" : "Agenda tu cita"}</h2>
 
       <form onSubmit={handleSubmit(mySubmit)}>
         <ContainerInput>
@@ -141,7 +167,8 @@ const FormCita = () => {
         )}
 
         <Button disabled={citaLoading}>
-          {citaLoading && <SpinnerSmall />}enviar
+          {citaLoading && <SpinnerSmall />}
+          {id ? "editar" : "enviar"}
         </Button>
       </form>
     </ContainerFormCitas>

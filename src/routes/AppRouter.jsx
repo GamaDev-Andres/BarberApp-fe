@@ -58,6 +58,7 @@ const AppRouter = () => {
               <Route element={<PrivateRouteUser />}>
                 <Route path="/barberos" element={<Barberos />} />
                 <Route path="/newcita" element={<NewCita />} />
+                <Route path="/newcita/:id" element={<NewCita />} />
               </Route>
             </Route>
           </Route>
