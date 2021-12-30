@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useReducer } from "react";
 import Swal from "sweetalert2";
+
 import {
   getUrlBarberos,
-  getUrlnewCita,
   getUrlUpdateCliente,
   getUrlUpdateEmpleado,
 } from "../../helpers/getUrls";
@@ -55,7 +55,7 @@ const UsersState = ({ children }) => {
     },
     // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token ,
     //cambiara el state , por lo tanto deberia volver a memorizarse la funcion
-    [token]
+    [user]
   );
 
   return (

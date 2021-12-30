@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import contextCitas from "../../contexts/contextCitas/contextCitas";
-import { dateFormat } from "../../helpers/dateFormat";
 import getCitaFormatFromId from "../../helpers/getCitaFormatFromId";
 import Spinner from "../Spinner/Spinner";
 import FormCita from "./FormCita";
 import { ContainerNewCitaUsers } from "./styles";
 
 const NewCita = () => {
+  console.log("render new cita");
   const { id } = useParams();
   const { citas, getCitas } = useContext(contextCitas);
   const [objCita, setObjCita] = useState(getCitaFormatFromId(id, citas) || {});

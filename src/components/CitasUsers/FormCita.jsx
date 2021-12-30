@@ -12,6 +12,12 @@ import Spinner from "../Spinner/Spinner";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
 import { ContainerFormCitas } from "./styles";
 
+const initialForm = {
+  barbero: "",
+  fecha: dateFormat(),
+  hora: new Date().toLocaleTimeString().substring(0, 5),
+  observaciones: "",
+};
 const FormCita = ({ defaultValues }) => {
   const {
     reset,
@@ -19,7 +25,10 @@ const FormCita = ({ defaultValues }) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: initialForm,
+  });
+  console.log("render form cita");
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -39,11 +48,14 @@ const FormCita = ({ defaultValues }) => {
   useEffect(() => {
     if (id) {
       reset(defaultValues);
+    } else {
+      reset(initialForm);
     }
+
     return () => {
       setLoading(false);
     };
-  }, [defaultValues, id]);
+  }, [id]);
 
   useEffect(() => {
     const getBarberosEffect = async () => {
@@ -67,14 +79,14 @@ const FormCita = ({ defaultValues }) => {
       setCitaLoading(true);
       await editCita(id, cita);
       setCitaLoading(false);
-      reset({});
+      reset(initialForm);
       navigate("/newcita");
     } else {
       setCitaLoading(true);
       await createCita(cita);
       setCitaLoading(false);
+      reset(initialForm);
     }
-    reset({});
   };
   if (loading) return <Spinner />;
   return (
@@ -111,7 +123,7 @@ const FormCita = ({ defaultValues }) => {
             name="fecha"
             type="date"
             min={dateFormat()}
-            defaultValue={dateFormat()}
+            // defaultValue={dateFormat()}
             {...register("fecha", {
               validate: (value) => {
                 if (
@@ -136,7 +148,7 @@ const FormCita = ({ defaultValues }) => {
             min="08:00"
             max="18:00"
             step={60}
-            defaultValue={new Date().toLocaleTimeString().substring(0, 5)}
+            // defaultValue={new Date().toLocaleTimeString().substring(0, 5)}
             {...register("hora", {
               validate: (value) => {
                 if (fecha.current === dateFormat()) {

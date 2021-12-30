@@ -24,9 +24,6 @@ const ProfileBarbero = React.lazy(() =>
   import("../components/ProfileBarbero/ProfileBarbero")
 );
 const NewCita = React.lazy(() => import("../components/CitasUsers/NewCita"));
-const CitasBarbero = React.lazy(() =>
-  import("../components/CitasBarbero/CitasBarbero")
-);
 
 const Home = React.lazy(() => import("../components/Home/Home"));
 const HomeSesion = React.lazy(() =>
@@ -36,11 +33,7 @@ const Login = React.lazy(() => import("../components/Login/Login"));
 const Register = React.lazy(() => import("../components/Register/Register"));
 
 const AppRouter = () => {
-  const {
-    user: { type },
-    token,
-  } = useContext(contextAuth);
-  const isUser = type === "user";
+  const { token } = useContext(contextAuth);
 
   if (token === null) {
     return <Spinner />;

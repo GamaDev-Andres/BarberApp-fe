@@ -1,5 +1,6 @@
 import React, { useCallback, useReducer } from "react";
 import Swal from "sweetalert2";
+
 import {
   getUrlCitas,
   getUrlDeleteCita,
@@ -72,10 +73,8 @@ const CitasState = ({ children }) => {
   const editCita = useCallback(async (id, data) => {
     const url = getUrlUpdateCita(id);
     try {
-      console.log(data);
       const res = await fetchToken(url, data, "PUT");
       const resjson = await res.json();
-      console.log(resjson);
       if (!resjson.ok) {
         await Swal.fire("error", resjson.msg, "error");
         return;

@@ -6,7 +6,7 @@ const getCitaFormatFromId = (id, citas) => {
   const { barbero, observaciones, fecha } = cita;
   const arrFecha = new Date(fecha).toLocaleString().split(" ");
   const fechaMod = dateFormat(fecha);
-  const firstLetterHour = arrFecha[0].slice(0, 1);
+  const firstLetterHour = arrFecha[0].split(":")[0];
   const horaMod =
     +firstLetterHour < 10
       ? `0${arrFecha[1]}`.substring(0, 5)

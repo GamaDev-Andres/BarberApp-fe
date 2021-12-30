@@ -1,17 +1,16 @@
 import React, { useCallback, useEffect, useReducer } from "react";
+import Swal from "sweetalert2";
+
 import types from "../../types/types";
 import authReducer from "./AuthReducer";
 import contextAuth from "./ContextAuth";
 import { fetchSinToken, fetchToken } from "../../helpers/peticiones";
-import Swal from "sweetalert2";
 import {
   getUrlLoginEmpleado,
   getUrlLoginUser,
   getUrlNewEmpleado,
   getUrlNewUser,
   getUrlRefresh,
-  getUrlUpdateCliente,
-  getUrlUpdateEmpleado,
   getUrlValidAdmin,
 } from "../../helpers/getUrls";
 
@@ -23,6 +22,7 @@ const initialState = {
 const AuthState = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
   const { token, user } = state;
+
   useEffect(() => {
     async function refrescandoToken() {
       await refreshToken();
