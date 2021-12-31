@@ -1,14 +1,14 @@
 import React from "react";
 import CardBarbero from "./CardBarbero";
+import { StyledContainerListBarberos } from "./styles";
 
 const ListOfBarberos = () => {
   return (
-    <div>
-      lista de barberos
-      <div>
+    <StyledContainerListBarberos>
+      {[1, 2, 3, 4].map((el) => (
         <CardBarbero />
-      </div>
-    </div>
+      ))}
+    </StyledContainerListBarberos>
   );
 };
 export default ListOfBarberos;

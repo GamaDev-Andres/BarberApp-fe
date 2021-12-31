@@ -1,14 +1,13 @@
 import React from "react";
 import ListOfBarberos from "./ListOfBarberos";
+import { StyledContainerBarberos } from "./styles";
 
 const Barberos = () => {
   return (
-    <div>
-      barberos container
-      <div>
-        <ListOfBarberos />
-      </div>
-    </div>
+    <StyledContainerBarberos>
+      <h2>Barberos disponibles</h2>
+      <ListOfBarberos />
+    </StyledContainerBarberos>
   );
 };
 
