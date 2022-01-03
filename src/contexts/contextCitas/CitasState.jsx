@@ -14,11 +14,12 @@ import contextCitas from "./contextCitas";
 
 const initialState = {
   citas: null,
+  barberSelected: null,
 };
 
 const CitasState = ({ children }) => {
   const [state, dispatch] = useReducer(citasReducer, initialState);
-  const { citas } = state;
+  const { citas, barberSelected } = state;
 
   const createCita = useCallback(async (data) => {
     const url = getUrlnewCita();
@@ -86,9 +87,21 @@ const CitasState = ({ children }) => {
     }
   }, []);
 
+  const selectBarbero = useCallback((data) => {
+    dispatch({ type: types.citasSelectBarbero, payload: data });
+  }, []);
+
   return (
     <contextCitas.Provider
-      value={{ citas, createCita, getCitas, deleteCita, editCita }}
+      value={{
+        citas,
+        barberSelected,
+        createCita,
+        getCitas,
+        deleteCita,
+        editCita,
+        selectBarbero,
+      }}
     >
       {children}
     </contextCitas.Provider>

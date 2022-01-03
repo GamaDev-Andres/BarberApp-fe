@@ -26,6 +26,7 @@ const ProfileBarbero = React.lazy(() =>
 const NewCita = React.lazy(() => import("../components/CitasUsers/NewCita"));
 
 const Home = React.lazy(() => import("../components/Home/Home"));
+
 const HomeSesion = React.lazy(() =>
   import("../components/HomeSesion/HomeSesion")
 );

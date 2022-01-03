@@ -12,6 +12,7 @@ const NewCita = () => {
   const { citas, getCitas } = useContext(contextCitas);
   const [objCita, setObjCita] = useState(getCitaFormatFromId(id, citas) || {});
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (!citas) {
       setLoading(true);

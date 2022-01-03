@@ -19,7 +19,7 @@ const initialState = {
 const UsersState = ({ children }) => {
   const [state, dispatch] = useReducer(usersReducer, initialState);
   const { barberos } = state;
-  const { user, token } = useContext(contextAuth);
+  const { user } = useContext(contextAuth);
 
   const getBarberos = useCallback(async () => {
     const url = getUrlBarberos();

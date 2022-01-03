@@ -1,17 +1,19 @@
 import styled from "styled-components";
-import { flex, grid } from "../../styles/utilStyles";
+import { flex } from "../../styles/utilStyles";
 
 export const StyledContainerBarberos = styled.main`
   flex-grow: 1;
   background-color: ${(props) => props.theme.colors.fondo};
 `;
 export const StyledContainerListBarberos = styled.div`
-  ${grid(1)};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 1rem;
   gap: 1rem;
 `;
 export const StyledCardBarbero = styled.div`
   ${flex("column")};
+  align-items: stretch;
   gap: 10px;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};
   border-radius: 10px;
@@ -23,7 +25,6 @@ export const StyledContainerFotoBarbero = styled.div`
   gap: 10px;
   picture {
     margin: 0 auto;
-    /* width: 80%; */
     max-width: 40px;
     img {
       aspect-ratio: 1;
@@ -35,7 +36,8 @@ export const StyledContainerFotoBarbero = styled.div`
   h4 {
     text-align: left;
   }
-  div {
+  & > div {
+    position: relative;
     flex-grow: 1;
   }
 `;

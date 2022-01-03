@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import contextCitas from "../../contexts/contextCitas/contextCitas";
-import contextUsers from "../../contexts/contextUsers/contextUsers";
+import { StyledItemAction } from "../layout/ActionsMenu/styles";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
-import { StyledItemAction } from "./styles";
 
 const ItemsActionsBarbero = ({ cita, handleOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -59,6 +58,7 @@ const ItemsActionsBarbero = ({ cita, handleOpen }) => {
             loading={loading.toString()}
             role="menuitem"
             tabIndex={0}
+            as="button"
           >
             {<span>{loading && <SpinnerSmall />}</span>}
 
@@ -74,6 +74,7 @@ const ItemsActionsBarbero = ({ cita, handleOpen }) => {
             loading={loading.toString()}
             role="menuitem"
             tabIndex={0}
+            as="button"
           >
             {<span>{loading && <SpinnerSmall />}</span>}
 
@@ -92,6 +93,7 @@ const ItemsActionsBarbero = ({ cita, handleOpen }) => {
           loading={loading.toString()}
           role="menuitem"
           tabIndex={0}
+          as="button"
         >
           {<span>{loading && <SpinnerSmall />}</span>}
 

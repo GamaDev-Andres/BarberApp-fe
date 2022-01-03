@@ -6,26 +6,29 @@ import {
   StyledContainerDescriptionBarbero,
   StyledContainerFotoBarbero,
 } from "./styles";
+import OptionsBarbero from "./OptionsBarbero";
 
-const CardBarbero = () => {
+const CardBarbero = ({ barbero }) => {
   return (
     <StyledCardBarbero>
       <StyledContainerFotoBarbero>
         <picture>
-          <img src={UserEmpty} alt="" />
+          <img
+            src={barbero.pefil?.foto || UserEmpty}
+            alt={`foto de ${barbero.nombre}`}
+          />
         </picture>
         <div>
+          <OptionsBarbero barbero={barbero} />
+
           <h4>Nombre:</h4>
-          <span>mi nombre es juan</span>
+          <span>{barbero.nombre}</span>
         </div>
       </StyledContainerFotoBarbero>
       <StyledContainerDescriptionBarbero>
         <div>
           <h4>Descripcion:</h4>
-          <span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-            voluptatum expedita voluptatibus unde dicta quod ab
-          </span>
+          <span>{barbero.perfil?.descripcion || "Sin descripcion"}</span>
         </div>
       </StyledContainerDescriptionBarbero>
     </StyledCardBarbero>

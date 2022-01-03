@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import contextCitas from "../../contexts/contextCitas/contextCitas";
+import { StyledItemAction } from "../layout/ActionsMenu/styles";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
-import { StyledItemAction } from "./styles";
 
 const ItemsActionsCliente = ({ cita }) => {
   const { deleteCita } = useContext(contextCitas);
@@ -59,6 +59,7 @@ const ItemsActionsCliente = ({ cita }) => {
           onClick={handleEdit}
           role="menuitem"
           tabIndex={0}
+          as="button"
         >
           <span>{loading && <SpinnerSmall />}</span>
           {!loading && (
@@ -74,6 +75,7 @@ const ItemsActionsCliente = ({ cita }) => {
         onClick={handleDelete}
         role="menuitem"
         tabIndex={0}
+        as="button"
       >
         <span>{loading && <SpinnerSmall />}</span>
         {!loading && (

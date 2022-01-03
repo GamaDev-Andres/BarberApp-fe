@@ -8,6 +8,7 @@ const types = {
 
   citasGetCitas: "get citas",
   citasDeleteCita: "delete cita",
+  citasSelectBarbero: "select barbero previo",
   // citasAddCita: "agregar cita",
 };
 export default types;

@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 import { dateFormat } from "../../helpers/dateFormat";
-import getCitaFormatFromId from "../../helpers/getCitaFormatFromId";
 import { validateCita } from "../../helpers/validateForm";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { MessageError } from "../Register/styles";
+import { ContainerFormCitas } from "./styles";
 import Spinner from "../Spinner/Spinner";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
-import { ContainerFormCitas } from "./styles";
 
 const initialForm = {
   barbero: "",
@@ -28,7 +28,6 @@ const FormCita = ({ defaultValues }) => {
   } = useForm({
     defaultValues: initialForm,
   });
-  console.log("render form cita");
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -37,7 +36,8 @@ const FormCita = ({ defaultValues }) => {
   const [citaLoading, setCitaLoading] = useState(false);
 
   const { barberos, getBarberos } = useContext(contextUsers);
-  const { createCita, editCita } = useContext(contextCitas);
+  const { createCita, editCita, barberSelected, selectBarbero } =
+    useContext(contextCitas);
 
   const fecha = useRef({});
   const hora = useRef({});
@@ -48,13 +48,11 @@ const FormCita = ({ defaultValues }) => {
   useEffect(() => {
     if (id) {
       reset(defaultValues);
+    } else if (barberSelected) {
+      reset({ barbero: barberSelected });
     } else {
       reset(initialForm);
     }
-
-    return () => {
-      setLoading(false);
-    };
   }, [id]);
 
   useEffect(() => {
@@ -67,6 +65,12 @@ const FormCita = ({ defaultValues }) => {
     };
 
     getBarberosEffect();
+    return () => {
+      setLoading(false);
+      if (barberSelected) {
+        selectBarbero(null);
+      }
+    };
   }, []);
 
   const mySubmit = async (data) => {

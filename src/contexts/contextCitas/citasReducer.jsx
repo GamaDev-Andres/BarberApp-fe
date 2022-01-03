@@ -12,6 +12,11 @@ export const citasReducer = (state, action) => {
         ...state,
         citas: state.citas.filter((cita) => cita._id !== action.payload),
       };
+    case types.citasSelectBarbero:
+      return {
+        ...state,
+        barberSelected: action.payload,
+      };
     default:
       return state;
   }
