@@ -51,7 +51,7 @@ const FormCita = ({ defaultValues }) => {
     } else if (barberSelected) {
       reset({ barbero: barberSelected });
     } else {
-      reset(initialForm);
+      reset(barberSelected);
     }
   }, [id]);
 
@@ -80,6 +80,8 @@ const FormCita = ({ defaultValues }) => {
       observaciones: data.observaciones,
     };
     if (id) {
+      console.log("entrando");
+
       setCitaLoading(true);
       await editCita(id, cita);
       setCitaLoading(false);
@@ -127,7 +129,6 @@ const FormCita = ({ defaultValues }) => {
             name="fecha"
             type="date"
             min={dateFormat()}
-            // defaultValue={dateFormat()}
             {...register("fecha", {
               validate: (value) => {
                 if (
@@ -152,7 +153,6 @@ const FormCita = ({ defaultValues }) => {
             min="08:00"
             max="18:00"
             step={60}
-            // defaultValue={new Date().toLocaleTimeString().substring(0, 5)}
             {...register("hora", {
               validate: (value) => {
                 if (fecha.current === dateFormat()) {

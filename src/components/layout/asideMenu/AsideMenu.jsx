@@ -1,6 +1,11 @@
 import React from "react";
 import ListOfLinks from "./ListOfLinks";
-import { Aside, ButtonMenuAside, ContainerAside, HeaderAside } from "./styles";
+import {
+  StyledAside,
+  ButtonMenuAside,
+  ContainerAside,
+  HeaderAside,
+} from "./styles";
 
 const AsideMenu = ({ openAside, setOpenAside }) => {
   return (
@@ -9,7 +14,7 @@ const AsideMenu = ({ openAside, setOpenAside }) => {
         onClick={() => setOpenAside(!openAside)}
         openAside={openAside}
       />
-      <Aside openAside={openAside}>
+      <StyledAside openAside={openAside}>
         <HeaderAside>
           <ButtonMenuAside onClick={() => setOpenAside(!openAside)}>
             <i className="fas fa-bars"></i>
@@ -17,7 +22,7 @@ const AsideMenu = ({ openAside, setOpenAside }) => {
           <h2>BarberApp</h2>
         </HeaderAside>
         <ListOfLinks />
-      </Aside>
+      </StyledAside>
     </>
   );
 };

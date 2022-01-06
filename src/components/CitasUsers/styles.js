@@ -45,7 +45,7 @@ export const ContainerCita = styled.article`
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.colors.grisClaro};
   ${(props) =>
-    props.noDispoinble &&
+    props.noDisponible &&
     css`
       cursor: not-allowed;
       &::after {
@@ -105,23 +105,3 @@ export const ContainerInformacionCita = styled.div`
   padding: 0.5rem;
   ${flex("column", "flex-start", "stretch")};
 `;
-
-// export const StyledItemAction = styled.div`
-//   cursor: pointer;
-//   font-size: 14px;
-//   padding: 5px;
-//   width: 100%;
-//   pointer-events: ${(props) => (props.loading === "true" ? "none" : "auto")};
-//   transition: all 0.3s ease;
-//   border-bottom: 1px solid ${(props) => props.theme.colors.grisClaro};
-//   ${flex("row", "flex-start")};
-//   gap: 10px;
-//   .sk-chase-dot:before {
-//     background-color: ${(props) => props.theme.colors.azul};
-//   }
-
-//   &:hover {
-//     background-color: ${(props) => props.theme.colors.grisClaro};
-//     color: ${(props) => props.theme.colors.claro};
-//   }
-// `;

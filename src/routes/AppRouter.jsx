@@ -13,9 +13,7 @@ const CitasUsers = React.lazy(() =>
 const PageNotFound = React.lazy(() =>
   import("../components/pageNotFound/PageNotFound")
 );
-const HomeEmpleado = React.lazy(() =>
-  import("../components/HomeEmpleado/HomeEmpleado")
-);
+
 const HomePresentation = React.lazy(() =>
   import("../components/HomePresentation/HomePresentation")
 );

@@ -3,6 +3,7 @@ import { dateFormat } from "./dateFormat";
 const getCitaFormatFromId = (id, citas) => {
   if (!id || !citas) return {};
   const cita = citas.find((date) => date._id === id);
+  if (!cita) return null;
   const { barbero, observaciones, fecha } = cita;
   const arrFecha = new Date(fecha).toLocaleString().split(" ");
   const fechaMod = dateFormat(fecha);

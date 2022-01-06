@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import getCitaFormatFromId from "../../helpers/getCitaFormatFromId";
 import Spinner from "../Spinner/Spinner";
@@ -12,8 +13,10 @@ const NewCita = () => {
   const { citas, getCitas } = useContext(contextCitas);
   const [objCita, setObjCita] = useState(getCitaFormatFromId(id, citas) || {});
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
+    if (!id) return;
+
     if (!citas) {
       setLoading(true);
       getCitas()
@@ -22,12 +25,18 @@ const NewCita = () => {
         })
         .catch((error) => console.log(error));
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (!id) return;
     const obj = getCitaFormatFromId(id, citas);
-    setObjCita(obj);
+    if (!obj) {
+      Swal.fire("error", "Id de cita no valido", "error").then((res) => {
+        navigate("/citas");
+      });
+    } else {
+      setObjCita(obj);
+    }
   }, [id, citas]);
 
   return (

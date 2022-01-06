@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { flex } from "../../../styles/utilStyles";
 import { ButtonMenu } from "../headerHome/styles";
 
-export const Aside = styled.aside`
+export const StyledAside = styled.aside`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -11,15 +11,19 @@ export const Aside = styled.aside`
   z-index: 9999;
   color: ${(props) => props.theme.colors.claro};
   transition: transform 0.3s ease-out;
+  /* transition: visibility 0.3s ease-out; */
+  /* visibility: hidden; */
+
   ${(props) =>
     props.openAside
       ? css`
           transform: translateX(0%);
-          z-index: 9999;
+          /* z-index: 9999; */
+          /* visibility: visible; */
         `
       : css`
           transform: translateX(-100%);
-          /* z-index: 1; */
+          /* visibility: hidden; */
         `}
   width: min(400px, 90%);
   background-color: ${(props) => props.theme.colors.azul};
@@ -59,7 +63,6 @@ export const ContainerAside = styled.div`
       : css`
           opacity: 0;
           visibility: hidden;
-          /* z-index: -1; */
         `};
 `;
 export const ItemLink = styled(NavLink)`
