@@ -46,9 +46,9 @@ const ProfileBarbero = () => {
   if (loading || !currentBarbero) return <Spinner />;
   return (
     <StyledContainerProfileBarbero>
+      <CalificacionesBarbero currentBarbero={currentBarbero} />
       <DetailsProfile currentBarbero={currentBarbero} />
       <CortesHechos currentBarbero={currentBarbero} />
-      <CalificacionesBarbero currentBarbero={currentBarbero} />
       <ComentariosSobreBarbero currentBarbero={currentBarbero} />
     </StyledContainerProfileBarbero>
   );

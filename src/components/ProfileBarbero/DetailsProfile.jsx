@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyledContainerDescriptionProfile,
   StyledContainerDetailsProfile,
   StyledContainerImgProfile,
 } from "./styles";
 import UserEmpty from "../../../assets/unnamed.png";
+import ActionsMenu from "../layout/ActionsMenu/ActionsMenu";
+import { StyledItemAction } from "../layout/ActionsMenu/styles";
+import { Button } from "../../styles/utilStyles";
 
 const DetailsProfile = ({ currentBarbero }) => {
   console.log("render");
   console.log(currentBarbero);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   return (
     <StyledContainerDetailsProfile>
       <StyledContainerImgProfile>
@@ -17,11 +24,16 @@ const DetailsProfile = ({ currentBarbero }) => {
           alt={`foto de ${currentBarbero.nombre}`}
         />
         <div>
-          <h4>Nombre:</h4>
-          <span>{currentBarbero.nombre}</span>
+          <h2>{currentBarbero.nombre}</h2>
         </div>
+        <Button className="boton">
+          <i className="far fa-edit"></i>
+        </Button>
       </StyledContainerImgProfile>
       <StyledContainerDescriptionProfile>
+        <ActionsMenu handleOpen={handleOpen} open={open}>
+          <StyledItemAction>Editar datos</StyledItemAction>
+        </ActionsMenu>
         <div>
           <h4>Experiencia:</h4>
           <span>{currentBarbero.perfil?.experiencia || "12 años"}</span>

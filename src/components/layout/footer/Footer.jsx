@@ -4,7 +4,7 @@ import { ContainerFooter } from "./styles";
 const Footer = () => {
   return (
     <ContainerFooter>
-      <p>Hecho con ❤ por Andres Gama</p>
+      <p>Hecho con 💜 por Andres Gama</p>
     </ContainerFooter>
   );
 };

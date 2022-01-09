@@ -1,72 +1,101 @@
 import styled from "styled-components";
+import { flex } from "../../styles/utilStyles";
 
 export const StyledContainerProfileBarbero = styled.main`
   flex-grow: 1;
   max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 `;
 
-export const StyledContainerDetailsProfile = styled.header``;
+export const StyledContainerDetailsProfile = styled.header`
+  /* width: 100%; */
+`;
 export const StyledContainerImgProfile = styled.div`
+  position: relative;
   width: 100%;
   padding: 1rem;
   display: grid;
   place-items: center;
   gap: 10px;
-  background-color: ${(props) => props.theme.colors.grisClaro};
+  background-color: ${(props) => props.theme.colors.fondo};
   img {
     border-radius: 50%;
     aspect-ratio: 1;
     width: 200px;
   }
+  & > .boton {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    top: calc(50% + 100px - 32.23px);
+    left: calc(50% + 100px - 45.41px);
+    transition: none;
+    /* &:hover {
+      transform: none;
+    } */
+  }
 `;
 export const StyledContainerDescriptionProfile = styled.div`
+  position: relative;
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors.azul};
-  color: ${(props) => props.theme.colors.claro};
+  background-color: ${(props) => props.theme.colors.azulClaro};
   span {
+    color: ${(props) => props.theme.colors.claro};
     font-size: 14px;
   }
   h4 {
+    color: ${(props) => props.theme.colors.claro};
     text-align: left;
     font-size: 1.2rem;
   }
 `;
 
 export const StyledContainerCalificacionesBarbero = styled.div`
+  ${flex()};
+  padding: 1rem;
+  background-color: ${(props) => props.theme.colors.fondo};
   & > div {
-    display: flex;
-    justify-content: center;
+    ${flex()};
     align-items: stretch;
-    align-content: stretch;
-    width: 1.2rem;
-    height: 1.2rem;
-    clip-path: polygon(
-      50% 0%,
-      61% 35%,
-      98% 35%,
-      68% 57%,
-      79% 91%,
-      50% 70%,
-      21% 91%,
-      32% 57%,
-      2% 35%,
-      39% 35%
-    );
-    div:nth-child(1) {
-      background-color: black;
-      height: 100%;
-      flex-grow: 1;
-    }
-    div:nth-child(2) {
-      flex-grow: 1;
-      background-color: blue;
-      height: 100%;
-    }
   }
+`;
+export const StyledPuntuacion = styled.div`
+  background-color: ${(props) => props.theme.colors.azulClaro};
+  padding: 1rem;
+  border-radius: 10px 0px 0px 10px;
+  span {
+    color: ${(props) => props.theme.colors.claro};
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+`;
+export const StyledContainerStars = styled.div`
+  ${flex()};
+  padding: 1rem;
+  border-radius: 0 10px 10px 0;
+  gap: 5px;
+  background-color: ${(props) => props.theme.colors.grisClaro};
+
   svg {
     color: ${(props) => props.theme.colors.oscuro};
     &:hover {
-      color: red;
+      color: ${(props) => props.theme.colors.amarillo};
     }
+  }
+`;
+export const StyledContainerCortes = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+export const StyledContainerCorte = styled.div`
+  background-color: gray;
+  img {
+    width: 100%;
+    /* width: min(100vw, 400px); */
+
+    /* aspect-ratio: 1; */
+    object-fit: cover;
   }
 `;

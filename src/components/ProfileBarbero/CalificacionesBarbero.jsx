@@ -1,17 +1,24 @@
 import React from "react";
-import { StyledContainerCalificacionesBarbero } from "./styles";
+import {
+  StyledContainerCalificacionesBarbero,
+  StyledContainerStars,
+  StyledPuntuacion,
+} from "./styles";
 
 const CalificacionesBarbero = () => {
   return (
     <StyledContainerCalificacionesBarbero>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
       <div>
-        <div></div>
-        <div></div>
+        <StyledPuntuacion>
+          <span>4.5</span>
+        </StyledPuntuacion>
+        <StyledContainerStars>
+          <i className="fas fa-star"></i>
+          <i className="fas fa-star"></i>
+          <i className="fas fa-star"></i>
+          <i className="fas fa-star"></i>
+          <i className="fas fa-star"></i>
+        </StyledContainerStars>
       </div>
     </StyledContainerCalificacionesBarbero>
   );

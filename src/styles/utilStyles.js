@@ -10,6 +10,7 @@ export const media = {
 export const theme = {
   colors: {
     fondo: "#F8F9F9",
+    fondoOscuro: "#3E3E3E",
     claro: "#eee",
     oscuro: "#1E1E1E",
     grisClaro: "rgb(190, 190, 190)",
@@ -18,6 +19,7 @@ export const theme = {
     azulClaro: "#1844a8",
     rojoOscuro: "#a31a18",
     rojo: "#E72622",
+    amarillo: "#FFC602",
   },
 };
 export const flex = (direction = "row", jc = "center", ai = "center") => {
