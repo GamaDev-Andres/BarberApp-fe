@@ -4,8 +4,13 @@ import { flex } from "../../styles/utilStyles";
 export const StyledContainerBarberos = styled.main`
   flex-grow: 1;
   background-color: ${(props) => props.theme.colors.fondo};
+  h2 {
+    margin-top: 1rem;
+  }
 `;
 export const StyledContainerListBarberos = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 1rem;

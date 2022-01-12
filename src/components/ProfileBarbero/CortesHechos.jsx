@@ -1,62 +1,60 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Corte from "./Corte";
 import { StyledContainerCortes } from "./styles";
 import Carousel from "react-bootstrap/Carousel";
+import ActionsMenu from "../layout/ActionsMenu/ActionsMenu";
+import { StyledItemAction } from "../layout/ActionsMenu/styles";
+import contextAuth from "../../contexts/contextAuth/ContextAuth";
 
-const CortesHechos = () => {
+const CortesHechos = ({ currentBarbero }) => {
+  const [open, setOpen] = useState(false);
+  const {
+    user: { id },
+  } = useContext(contextAuth);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const handleChangeFile = (e) => {
+    let reader = new FileReader();
+    const fileInput = e.target.files[0];
+    console.log(fileInput);
+    reader.readAsDataURL(fileInput);
+
+    reader.onload = function () {
+      console.log(reader.result);
+    };
+
+    reader.onerror = function () {
+      console.log(reader.error);
+    };
+  };
+
   return (
-    <>
+    <StyledContainerCortes>
       <h2>Cortes</h2>
-      <StyledContainerCortes>
-        {/* {[1, 2, 3, 4, 5].map((corte) => (
-          <Corte key={corte} />
-        ))} */}
-        <Carousel>
-          {[1, 2, 3, 4, 5].map((corte) => (
-            <Carousel.Item key={corte}>
-              <Corte />
-            </Carousel.Item>
-          ))}
-          {/* <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://picsum.photos/200"
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://picsum.photos/200"
-              alt="Second slide"
-            />
+      {id === currentBarbero._id && (
+        <ActionsMenu handleOpen={handleOpen} open={open}>
+          <StyledItemAction as="label" htmlFor="input-file-cortes">
+            Agregar corte
+          </StyledItemAction>
 
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
+          <input
+            onChange={handleChangeFile}
+            accept="image/*"
+            type="file"
+            id="input-file-cortes"
+          />
+        </ActionsMenu>
+      )}
+      <Carousel>
+        {[1, 2, 3, 4, 5].map((corte) => (
+          <Carousel.Item key={corte}>
+            <Corte />
           </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://picsum.photos/200"
-              alt="Third slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item> */}
-        </Carousel>
-      </StyledContainerCortes>
-    </>
+        ))}
+      </Carousel>
+    </StyledContainerCortes>
   );
 };
 

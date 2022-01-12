@@ -29,9 +29,7 @@ const ListOfLinks = () => {
           </ItemLink>
         </>
       )}
-      <ItemLink to="/barberos/21">
-        <i className="fas fa-user"></i>barberos 21
-      </ItemLink>
+
       <ButtonSignOutAside onClick={handleSignOut} as="button">
         <i className="fas fa-users"></i>Cerrar Sesion
       </ButtonSignOutAside>

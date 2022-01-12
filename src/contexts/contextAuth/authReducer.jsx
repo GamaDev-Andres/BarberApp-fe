@@ -18,7 +18,8 @@ const authReducer = (state, action) => {
         token: "",
         user: {},
       };
-    case types.userEditNombre:
+    case types.userEdit:
+      console.log("Desde reducer ", state.user);
       return {
         ...state,
         user: { ...state.user, ...action.payload },

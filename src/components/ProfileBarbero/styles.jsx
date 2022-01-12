@@ -1,15 +1,17 @@
 import styled from "styled-components";
-import { flex } from "../../styles/utilStyles";
+import { flex, media } from "../../styles/utilStyles";
 
 export const StyledContainerProfileBarbero = styled.main`
   flex-grow: 1;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
 `;
 
 export const StyledContainerDetailsProfile = styled.header`
-  /* width: 100%; */
+  ${media.sTablet} {
+    display: flex;
+  }
 `;
 export const StyledContainerImgProfile = styled.div`
   position: relative;
@@ -19,10 +21,17 @@ export const StyledContainerImgProfile = styled.div`
   place-items: center;
   gap: 10px;
   background-color: ${(props) => props.theme.colors.fondo};
+  ${media.sTablet} {
+    width: min-content;
+  }
   img {
     border-radius: 50%;
     aspect-ratio: 1;
     width: 200px;
+    object-fit: cover;
+  }
+  & > [type="file"] {
+    display: none;
   }
   & > .boton {
     position: absolute;
@@ -32,14 +41,12 @@ export const StyledContainerImgProfile = styled.div`
     top: calc(50% + 100px - 32.23px);
     left: calc(50% + 100px - 45.41px);
     transition: none;
-    /* &:hover {
-      transform: none;
-    } */
   }
 `;
 export const StyledContainerDescriptionProfile = styled.div`
   position: relative;
   padding: 1rem;
+  flex-grow: 1;
   background-color: ${(props) => props.theme.colors.azulClaro};
   span {
     color: ${(props) => props.theme.colors.claro};
@@ -80,22 +87,34 @@ export const StyledContainerStars = styled.div`
 
   svg {
     color: ${(props) => props.theme.colors.oscuro};
+    cursor: pointer;
     &:hover {
       color: ${(props) => props.theme.colors.amarillo};
     }
   }
 `;
 export const StyledContainerCortes = styled.div`
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
+  margin-top: 1rem;
+  aspect-ratio: 16/9;
+  padding-bottom: 1rem;
+  position: relative;
+  h2 {
+    margin-bottom: 1rem;
+  }
+  input {
+    display: none;
+  }
 `;
 export const StyledContainerCorte = styled.div`
   background-color: gray;
+  aspect-ratio: 16/9;
+  display: grid;
   img {
-    width: 100%;
-    /* width: min(100vw, 400px); */
-
-    /* aspect-ratio: 1; */
-    object-fit: cover;
+    min-width: 100%;
+    aspect-ratio: 16/9;
+    height: 100%;
+    object-fit: contain;
   }
 `;

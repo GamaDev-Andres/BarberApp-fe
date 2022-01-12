@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import contextAuth from "../../../contexts/contextAuth/ContextAuth";
 import {
   ButtonOption,
@@ -9,8 +10,10 @@ import {
 const ButtonSettings = ({ handleEdit }) => {
   const {
     signOutSesion,
-    user: { type },
+    user: { type, id },
   } = useContext(contextAuth);
+  const navigate = useNavigate();
+
   const hanleSignOut = () => {
     signOutSesion();
   };
@@ -28,7 +31,7 @@ const ButtonSettings = ({ handleEdit }) => {
           <span>Editar nombre</span>
         </ButtonOption>
         {type === "empleado" && (
-          <ButtonOption as="div">
+          <ButtonOption onClick={() => navigate(`/barberos/${id}`)} as="div">
             <i className="fas fa-user"></i>
             <span>Mi perfil</span>
           </ButtonOption>

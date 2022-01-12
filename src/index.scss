@@ -1,5 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
-
+body {
+  background-color: #f8f9f9;
+}
 *,
 *::after,
 *::before {
@@ -7,6 +9,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Sora", sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
 }
 button {
   border: none;

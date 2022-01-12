@@ -7,6 +7,7 @@ const usersReducer = (state, action) => {
         ...state,
         barberos: action.payload,
       };
+
     default:
       return state;
   }

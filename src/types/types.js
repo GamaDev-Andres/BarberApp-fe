@@ -4,6 +4,7 @@ const types = {
   authRefreshToken: "refresh token",
 
   userEditNombre: "editando nombre cliente o barbero",
+  userEdit: "editando cliente o barbero",
   userSetBarberos: "seteando barberos",
 
   citasGetCitas: "get citas",

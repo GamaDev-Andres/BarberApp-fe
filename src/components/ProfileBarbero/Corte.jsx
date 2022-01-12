@@ -4,7 +4,7 @@ import { StyledContainerCorte } from "./styles";
 const Corte = () => {
   return (
     <StyledContainerCorte>
-      <img src="https://picsum.photos/200" alt="img" />
+      <img src="https://picsum.photos/320/180" alt="img" />
     </StyledContainerCorte>
   );
 };
