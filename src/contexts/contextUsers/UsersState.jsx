@@ -24,7 +24,6 @@ const UsersState = ({ children }) => {
 
   const getBarberos = useCallback(async () => {
     const url = getUrlBarberos();
-    // try {
     const res = await fetchToken(url);
     const resjson = await res.json();
     if (!resjson.ok) {
@@ -32,9 +31,6 @@ const UsersState = ({ children }) => {
       throw new Error(resjson.msg);
     }
     dispatch({ type: types.userSetBarberos, payload: resjson.empleados });
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }, []);
 
   return (

@@ -17,28 +17,17 @@ const DetailsProfile = ({ currentBarbero }) => {
     user: { id },
   } = useContext(contextAuth);
   const { editarUser } = useContext(contextAuth);
-  const { data, loading, handleOpen: handleOpenWidget } = useUpdateCloudinary();
+  const {
+    data,
+    loading,
+    handleOpen: handleOpenWidget,
+  } = useUpdateCloudinary(false);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
-  const handleChangeFile = (e) => {
-    let reader = new FileReader();
-    const fileInput = e.target.files[0];
-    console.log(fileInput);
-    reader.readAsDataURL(fileInput);
-
-    reader.onload = function () {
-      console.log(reader.result);
-    };
-
-    reader.onerror = function () {
-      console.log(reader.error);
-    };
-  };
-
-  const handleClickFoto = () => {
+  const handleClickAddFoto = () => {
     handleOpenWidget();
   };
   useEffect(() => {
@@ -62,25 +51,16 @@ const DetailsProfile = ({ currentBarbero }) => {
         <div>
           <h2>{currentBarbero.nombre}</h2>
         </div>
-        {
-          id === currentBarbero._id && (
-            <Button
-              disabled={loading}
-              onClick={handleClickFoto}
-              htmlFor="input-file"
-              className="boton"
-            >
-              <i className="far fa-edit"></i>
-            </Button>
-          )
-          // )}
-          // <input
-          //   onChange={handleChangeFile}
-          //   accept="image/*"
-          //   type="file"
-          //   id="input-file"
-          // />
-        }
+        {id === currentBarbero._id && (
+          <Button
+            disabled={loading}
+            onClick={handleClickAddFoto}
+            htmlFor="input-file"
+            className="boton"
+          >
+            <i className="far fa-edit"></i>
+          </Button>
+        )}
       </StyledContainerImgProfile>
       <StyledContainerDescriptionProfile>
         {id === currentBarbero._id && (

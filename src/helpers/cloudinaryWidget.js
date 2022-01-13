@@ -1,9 +1,9 @@
-export const optionsCloudinary = {
+export const optionsCloudinary = (multiple = false) => ({
   cloudName: "dapa84kxy",
   uploadPreset: "barberapp",
   sources: ["local", "camera"],
   showAdvancedOptions: false,
-  cropping: false,
-  multiple: true,
+  cropping: !multiple,
+  multiple,
   defaultSource: "local",
-};
+});

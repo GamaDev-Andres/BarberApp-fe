@@ -15,7 +15,7 @@ const ProfileBarbero = () => {
   const { getBarberos, barberos } = useContext(contextUsers);
   const {
     user,
-    user: { id: userId },
+    user: { id: userId, type },
   } = useContext(contextAuth);
   const [currentBarbero, setCurrentBarbero] = useState(null);
   const { id } = useParams();
@@ -35,7 +35,7 @@ const ProfileBarbero = () => {
       }
     };
 
-    if (id !== userId) {
+    if (type === "user") {
       getBarberosEffect();
     }
 
@@ -43,7 +43,15 @@ const ProfileBarbero = () => {
   }, []);
 
   useEffect(() => {
-    if (id === userId) {
+    if (type === "empleado") {
+      if (id !== userId) {
+        Swal.fire(
+          "error",
+          "Este perfil no esta dispoible para empleados",
+          "error"
+        ).then((res) => navigate("/"));
+        return;
+      }
       setCurrentBarbero({
         _id: userId,
         nombre: user.nombre,
@@ -54,7 +62,9 @@ const ProfileBarbero = () => {
     }
     if (!barberos) return;
     const barbero = barberos.find((el) => el._id === id);
-    if (!barbero) {
+    if (barbero) {
+      setCurrentBarbero(barbero);
+    } else {
       Swal.fire(
         "error",
         "Este barbero no existe o no existen barberos disponibles",
@@ -62,8 +72,6 @@ const ProfileBarbero = () => {
       ).then((res) => {
         navigate("/");
       });
-    } else {
-      setCurrentBarbero(barbero);
     }
   }, [id, barberos, user]);
 
@@ -72,7 +80,9 @@ const ProfileBarbero = () => {
     <StyledContainerProfileBarbero>
       <DetailsProfile currentBarbero={currentBarbero} />
       <CalificacionesBarbero currentBarbero={currentBarbero} />
-      <CortesHechos currentBarbero={currentBarbero} />
+      {currentBarbero.cortes.length && (
+        <CortesHechos currentBarbero={currentBarbero} />
+      )}
       <ComentariosSobreBarbero currentBarbero={currentBarbero} />
     </StyledContainerProfileBarbero>
   );

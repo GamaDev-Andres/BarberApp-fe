@@ -94,9 +94,8 @@ export const StyledContainerStars = styled.div`
   }
 `;
 export const StyledContainerCortes = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 1rem;
   aspect-ratio: 16/9;
   padding-bottom: 1rem;
   position: relative;
@@ -108,13 +107,14 @@ export const StyledContainerCortes = styled.div`
   }
 `;
 export const StyledContainerCorte = styled.div`
-  background-color: gray;
-  aspect-ratio: 16/9;
+  background-color: ${(props) => props.theme.colors.fondoOscuro};
   display: grid;
   img {
-    min-width: 100%;
-    aspect-ratio: 16/9;
-    height: 100%;
-    object-fit: contain;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    cursor: pointer;
   }
 `;

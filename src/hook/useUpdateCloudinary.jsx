@@ -2,18 +2,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { optionsCloudinary } from "../helpers/cloudinaryWidget";
 
-const useUpdateCloudinary = () => {
+const useUpdateCloudinary = (multiple) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [open, setopen] = useState(false);
 
   const handleOpen = useCallback(() => {
-    setopen((state) => !state);
+    setopen(true);
   }, []);
 
   useEffect(() => {
     const widget = cloudinary.createUploadWidget(
-      optionsCloudinary,
+      optionsCloudinary(multiple),
       (err, result) => {
         if (!err) {
           console.log("Upload Widget event - ", result);
@@ -43,7 +43,6 @@ const useUpdateCloudinary = () => {
       }
     );
     if (open) {
-      console.log("llamo");
       setLoading(true);
 
       widget.open();
