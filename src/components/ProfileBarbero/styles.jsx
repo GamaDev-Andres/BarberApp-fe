@@ -109,7 +109,20 @@ export const StyledContainerCortes = styled.div`
 export const StyledContainerCorte = styled.div`
   background-color: ${(props) => props.theme.colors.fondoOscuro};
   display: grid;
-  img {
+  position: relative;
+  & > span {
+    position: absolute;
+    justify-self: center;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.fondoOscuro};
+    transition: color 0.3s ease;
+    &:hover {
+      color: ${(props) => props.theme.colors.rojo};
+    }
+  }
+  & > img {
     margin: 0 auto;
     width: 100%;
     max-width: 600px;
