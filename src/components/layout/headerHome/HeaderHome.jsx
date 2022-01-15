@@ -20,7 +20,7 @@ const HeaderHome = ({ setOpenAside }) => {
         >
           <i className="fas fa-bars"></i>
         </ButtonMenu>
-        <H1 onClick={handleRedirect}>BarberApp</H1>
+        <H1 onClick={handleRedirect}>BarberAPP</H1>
       </div>
 
       <ContainerSettings />

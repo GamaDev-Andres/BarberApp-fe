@@ -129,8 +129,8 @@ const AuthState = ({ children }) => {
           await Swal.fire("error", resjson.msg, "error");
           return;
         }
-        console.log(data);
         dispatch({ type: types.userEdit, payload: data });
+        await Swal.fire("Listo !", "edicion exitosa!", "success");
       } catch (error) {
         console.log(error);
       }

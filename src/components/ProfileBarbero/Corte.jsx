@@ -22,7 +22,6 @@ const Corte = ({ corte }) => {
 
   const handleOpenModalImg = () => {
     if (loading) return;
-    console.log("open img");
     setIsModalOpen(true);
   };
 
@@ -60,11 +59,13 @@ const Corte = ({ corte }) => {
     <StyledContainerCorte>
       <img onClick={handleOpenModalImg} src={corte} alt="imagen corte" />
       <span onClick={handleDeleteFoto} title="eliminar foto">
-        <i className="fas fa-times-circle"></i>
+        <i className="fas fa-trash-alt"></i>
       </span>
-      <ModalPortal isOpen={isModalOpen} closeModal={handleCloseModal}>
-        <img src={corte} alt="imagen corte" />
-      </ModalPortal>
+      {isModalOpen && (
+        <ModalPortal isOpen={isModalOpen} closeModal={handleCloseModal}>
+          <img src={corte} alt="imagen corte" />
+        </ModalPortal>
+      )}
     </StyledContainerCorte>
   );
 };

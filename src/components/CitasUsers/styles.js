@@ -6,6 +6,7 @@ export const ContainerNewCitaUsers = styled.main`
   flex-grow: 1;
   background-color: ${(props) => props.theme.colors.fondo};
   ${flex("column")};
+  padding: 1rem 0;
   gap: 1rem;
   h2 {
     color: ${(props) => props.theme.colors.azul};

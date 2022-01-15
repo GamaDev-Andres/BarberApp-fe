@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
@@ -80,7 +80,7 @@ const ProfileBarbero = () => {
     <StyledContainerProfileBarbero>
       <DetailsProfile currentBarbero={currentBarbero} />
       <CalificacionesBarbero currentBarbero={currentBarbero} />
-      {currentBarbero.cortes.length && (
+      {currentBarbero.cortes.length > 0 && (
         <CortesHechos currentBarbero={currentBarbero} />
       )}
       <ComentariosSobreBarbero currentBarbero={currentBarbero} />

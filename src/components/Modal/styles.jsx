@@ -1,13 +1,13 @@
 import styled from "styled-components";
+import { flex } from "../../styles/utilStyles";
 
 export const StyledContainerModal = styled.div`
+  ${flex()};
   background-color: ${(props) => props.theme.colors.oscuro};
 
   background-color: rgba(0, 0, 0, 0.5);
-  /* opacity: 0.9; */
-  display: grid;
-  place-content: center;
   z-index: 999;
+  ${flex()};
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -15,8 +15,9 @@ export const StyledContainerModal = styled.div`
 `;
 export const StyledMidContainerModal = styled.div`
   position: relative;
-  background-color: white;
-  max-width: 1000px;
+  ${flex()}
+  width: min(600px, 90vw);
+  margin: 0 auto;
   & > span {
     position: absolute;
     top: 0.5rem;

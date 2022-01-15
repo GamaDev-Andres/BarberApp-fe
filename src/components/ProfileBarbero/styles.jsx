@@ -29,6 +29,7 @@ export const StyledContainerImgProfile = styled.div`
     aspect-ratio: 1;
     width: 200px;
     object-fit: cover;
+    cursor: pointer;
   }
   & > [type="file"] {
     display: none;
@@ -102,9 +103,6 @@ export const StyledContainerCortes = styled.div`
   h2 {
     margin-bottom: 1rem;
   }
-  input {
-    display: none;
-  }
 `;
 export const StyledContainerCorte = styled.div`
   background-color: ${(props) => props.theme.colors.fondoOscuro};
@@ -129,5 +127,25 @@ export const StyledContainerCorte = styled.div`
     aspect-ratio: 1;
     object-fit: cover;
     cursor: pointer;
+  }
+`;
+
+export const StyledContainerEditDataBarbero = styled.div`
+  display: block;
+  padding: 1rem;
+  background-color: ${(props) => props.theme.colors.claro};
+  border-radius: 1rem;
+  width: min(600px, 90vw);
+  margin: 0 !important;
+  form {
+    width: 100%;
+    margin: 0;
+    ${flex("column")};
+    gap: 10px;
+    align-items: stretch;
+    button {
+      ${flex()};
+      gap: 5px;
+    }
   }
 `;
