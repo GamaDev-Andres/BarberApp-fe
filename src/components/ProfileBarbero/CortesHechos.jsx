@@ -24,7 +24,7 @@ const CortesHechos = ({ currentBarbero }) => {
   };
   useEffect(() => {
     if (data) {
-      const cortesObj = { cortes: [...currentBarbero.cortes, ...data] };
+      const cortesObj = { cortes: [...data] };
       editarUser(cortesObj).then((res) => console.log("cortes subidos"));
     }
   }, [data]);
@@ -46,13 +46,15 @@ const CortesHechos = ({ currentBarbero }) => {
           </StyledItemAction>
         </ActionsMenu>
       )}
-      <Carousel>
-        {currentBarbero.cortes.map((corte) => (
-          <Carousel.Item key={corte}>
-            <Corte corte={corte} />
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      {currentBarbero.cortes.length > 0 && (
+        <Carousel>
+          {currentBarbero.cortes.map((corte) => (
+            <Carousel.Item key={corte}>
+              <Corte corte={corte} />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      )}
     </StyledContainerCortes>
   );
 };

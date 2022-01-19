@@ -19,7 +19,6 @@ const authReducer = (state, action) => {
         user: {},
       };
     case types.userEdit:
-      console.log("Desde reducer ", state.user);
       return {
         ...state,
         user: { ...state.user, ...action.payload },

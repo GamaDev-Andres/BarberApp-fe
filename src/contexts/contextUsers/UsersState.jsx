@@ -30,6 +30,7 @@ const UsersState = ({ children }) => {
       await Swal.fire("error", resjson.msg, "error");
       throw new Error(resjson.msg);
     }
+    console.log("update barberos");
     dispatch({ type: types.userSetBarberos, payload: resjson.empleados });
   }, []);
 

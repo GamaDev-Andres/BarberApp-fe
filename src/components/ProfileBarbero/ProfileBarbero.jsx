@@ -5,7 +5,6 @@ import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 import Spinner from "../Spinner/Spinner";
 import CalificacionesBarbero from "./CalificacionesBarbero";
-import ComentariosSobreBarbero from "./ComentariosSobreBarbero";
 import CortesHechos from "./CortesHechos";
 import DetailsProfile from "./DetailsProfile";
 import { StyledContainerProfileBarbero } from "./styles";
@@ -56,6 +55,7 @@ const ProfileBarbero = () => {
         _id: userId,
         nombre: user.nombre,
         cortes: user.cortes,
+        calificacion: user.calificacion,
         perfil: user?.perfil,
       });
       return;
@@ -80,10 +80,7 @@ const ProfileBarbero = () => {
     <StyledContainerProfileBarbero>
       <DetailsProfile currentBarbero={currentBarbero} />
       <CalificacionesBarbero currentBarbero={currentBarbero} />
-      {currentBarbero.cortes.length > 0 && (
-        <CortesHechos currentBarbero={currentBarbero} />
-      )}
-      <ComentariosSobreBarbero currentBarbero={currentBarbero} />
+      <CortesHechos currentBarbero={currentBarbero} />
     </StyledContainerProfileBarbero>
   );
 };

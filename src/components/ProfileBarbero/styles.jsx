@@ -31,9 +31,7 @@ export const StyledContainerImgProfile = styled.div`
     object-fit: cover;
     cursor: pointer;
   }
-  & > [type="file"] {
-    display: none;
-  }
+
   & > .boton {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -70,11 +68,12 @@ export const StyledContainerCalificacionesBarbero = styled.div`
   }
 `;
 export const StyledPuntuacion = styled.div`
+  ${flex("column")};
   background-color: ${(props) => props.theme.colors.azulClaro};
   padding: 1rem;
   border-radius: 10px 0px 0px 10px;
+  color: ${(props) => props.theme.colors.claro};
   span {
-    color: ${(props) => props.theme.colors.claro};
     font-weight: bold;
     font-size: 1.3rem;
   }
@@ -86,18 +85,17 @@ export const StyledContainerStars = styled.div`
   gap: 5px;
   background-color: ${(props) => props.theme.colors.grisClaro};
 
-  svg {
-    color: ${(props) => props.theme.colors.oscuro};
-    cursor: pointer;
-    &:hover {
-      color: ${(props) => props.theme.colors.amarillo};
+  & > div {
+    &.active {
+      svg {
+        color: ${(props) => props.theme.colors.amarillo};
+      }
     }
   }
 `;
 export const StyledContainerCortes = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  aspect-ratio: 16/9;
   padding-bottom: 1rem;
   position: relative;
   h2 {
@@ -147,5 +145,12 @@ export const StyledContainerEditDataBarbero = styled.div`
       ${flex()};
       gap: 5px;
     }
+  }
+`;
+export const Icon = styled.i`
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.amarillo};
   }
 `;

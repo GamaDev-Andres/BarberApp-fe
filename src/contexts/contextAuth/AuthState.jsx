@@ -6,6 +6,7 @@ import authReducer from "./AuthReducer";
 import contextAuth from "./ContextAuth";
 import { fetchSinToken, fetchToken } from "../../helpers/peticiones";
 import {
+  getUrlDeleteCorte,
   getUrlLoginEmpleado,
   getUrlLoginUser,
   getUrlNewEmpleado,
@@ -116,11 +117,16 @@ const AuthState = ({ children }) => {
     }
   }, []);
   const editarUser = useCallback(
-    async (data) => {
-      const url =
-        user.type === "empleado"
-          ? getUrlUpdateEmpleado(user.id)
-          : getUrlUpdateCliente(user.id);
+    async (data, id) => {
+      let url;
+      if (data.calificacion) {
+        url = getUrlUpdateEmpleado(id);
+      } else {
+        url =
+          user.type === "empleado"
+            ? getUrlUpdateEmpleado(user.id)
+            : getUrlUpdateCliente(user.id);
+      }
 
       try {
         const res = await fetchToken(url, data, "PUT");
@@ -129,17 +135,38 @@ const AuthState = ({ children }) => {
           await Swal.fire("error", resjson.msg, "error");
           return;
         }
-        dispatch({ type: types.userEdit, payload: data });
+        if (!id) {
+          dispatch({ type: types.userEdit, payload: resjson.user });
+        }
         await Swal.fire("Listo !", "edicion exitosa!", "success");
       } catch (error) {
         console.log(error);
       }
     },
-    // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token ,
+    // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token o user,
     //cambiara el state , por lo tanto deberia volver a memorizarse la funcion
     [user]
   );
+  const deleteCorte = useCallback(
+    async (data) => {
+      const url = getUrlDeleteCorte(user.id);
+      try {
+        const res = await fetchToken(url, data, "PUT");
+        const resjson = await res.json();
+        if (!resjson.ok) {
+          await Swal.fire("error", resjson.msg, "error");
+          return;
+        }
 
+        dispatch({ type: types.userEdit, payload: resjson.user });
+
+        await Swal.fire("Listo !", "edicion exitosa!", "success");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [user]
+  );
   return (
     <contextAuth.Provider
       value={{
@@ -151,6 +178,7 @@ const AuthState = ({ children }) => {
         validarAdmin,
         signOutSesion,
         editarUser,
+        deleteCorte,
       }}
     >
       {children}

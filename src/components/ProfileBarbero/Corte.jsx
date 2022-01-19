@@ -7,10 +7,7 @@ import { ModalPortal } from "../Modal/Modal";
 import { StyledContainerCorte } from "./styles";
 
 const Corte = ({ corte }) => {
-  const {
-    user: { cortes },
-    editarUser,
-  } = useContext(contextAuth);
+  const { deleteCorte } = useContext(contextAuth);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,11 +36,9 @@ const Corte = ({ corte }) => {
       });
       if (res.isConfirmed) {
         setLoading(true);
-        const newArrCortes = cortes.filter((corteUser) => {
-          return corteUser !== corte;
-        });
-        const objCortes = { cortes: newArrCortes };
-        await editarUser(objCortes);
+
+        const objCortes = { cortes: corte };
+        await deleteCorte(objCortes);
         setLoading(false);
       }
     } catch (error) {

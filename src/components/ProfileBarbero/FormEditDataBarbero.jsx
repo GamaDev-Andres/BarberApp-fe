@@ -10,8 +10,8 @@ const FormEditDataBarbero = ({ handleCloseModal }) => {
     editarUser,
   } = useContext(contextAuth);
   const [objForm, setObjForm] = useState({
-    experiencia: perfil.experiencia || "",
-    descripcion: perfil.descripcion || "",
+    experiencia: perfil?.experiencia || "",
+    descripcion: perfil?.descripcion || "",
   });
   const [loading, setLoading] = useState(false);
 
