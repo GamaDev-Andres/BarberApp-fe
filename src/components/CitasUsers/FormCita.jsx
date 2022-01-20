@@ -80,8 +80,6 @@ const FormCita = ({ defaultValues }) => {
       observaciones: data.observaciones,
     };
     if (id) {
-      console.log("entrando");
-
       setCitaLoading(true);
       await editCita(id, cita);
       setCitaLoading(false);

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+
 import contextAuth from "../contexts/contextAuth/ContextAuth";
 
 const PrivateRouteUser = () => {
@@ -7,6 +8,7 @@ const PrivateRouteUser = () => {
     token,
     user: { type },
   } = useContext(contextAuth);
+
   return type === "user" ? (
     <Outlet />
   ) : token ? (

@@ -7,7 +7,10 @@ import { ModalPortal } from "../Modal/Modal";
 import { StyledContainerCorte } from "./styles";
 
 const Corte = ({ corte }) => {
-  const { deleteCorte } = useContext(contextAuth);
+  const {
+    deleteCorte,
+    user: { type },
+  } = useContext(contextAuth);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -53,9 +56,11 @@ const Corte = ({ corte }) => {
   return (
     <StyledContainerCorte>
       <img onClick={handleOpenModalImg} src={corte} alt="imagen corte" />
-      <span onClick={handleDeleteFoto} title="eliminar foto">
-        <i className="fas fa-trash-alt"></i>
-      </span>
+      {type === "empleado" && (
+        <span onClick={handleDeleteFoto} title="eliminar foto">
+          <i className="fas fa-trash-alt"></i>
+        </span>
+      )}
       {isModalOpen && (
         <ModalPortal isOpen={isModalOpen} closeModal={handleCloseModal}>
           <img src={corte} alt="imagen corte" />

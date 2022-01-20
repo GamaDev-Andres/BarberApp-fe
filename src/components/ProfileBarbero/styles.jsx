@@ -24,6 +24,9 @@ export const StyledContainerImgProfile = styled.div`
   ${media.sTablet} {
     width: min-content;
   }
+  h2 {
+    width: max-content;
+  }
   img {
     border-radius: 50%;
     aspect-ratio: 1;

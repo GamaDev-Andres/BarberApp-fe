@@ -136,6 +136,7 @@ const AuthState = ({ children }) => {
           return;
         }
         if (!id) {
+          console.log("resjson", resjson);
           dispatch({ type: types.userEdit, payload: resjson.user });
         }
         await Swal.fire("Listo !", "edicion exitosa!", "success");

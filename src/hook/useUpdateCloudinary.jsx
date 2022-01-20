@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+
 import { optionsCloudinary } from "../helpers/cloudinaryWidget";
 
 const useUpdateCloudinary = (multiple) => {

@@ -97,7 +97,7 @@ export const ContainerFotoCita = styled.div`
   img {
     border-radius: 50%;
     aspect-ratio: 1;
-
+    object-fit: cover;
     width: min(80%, 200px);
   }
 `;

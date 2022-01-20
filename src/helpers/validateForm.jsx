@@ -61,7 +61,7 @@ export const validateCita = {
   observaciones: {
     required: {
       value: true,
-      message: "La fecha es requerida",
+      message: "Las observaciones son requerida",
     },
     maxLength: {
       value: 254,

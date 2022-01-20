@@ -14,7 +14,7 @@ const CardBarbero = ({ barbero }) => {
       <StyledContainerFotoBarbero>
         <picture>
           <img
-            src={barbero.pefil?.foto || UserEmpty}
+            src={barbero.perfil?.foto || UserEmpty}
             alt={`foto de ${barbero.nombre}`}
           />
         </picture>

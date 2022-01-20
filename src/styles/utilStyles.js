@@ -46,6 +46,9 @@ export const ContainerInput = styled.div`
   }
   input {
     width: 100%;
+    &::placeholder {
+      font-size: 14px;
+    }
   }
   textarea {
     width: 100%;

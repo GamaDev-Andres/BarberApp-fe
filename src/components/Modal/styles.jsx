@@ -4,7 +4,6 @@ import { flex } from "../../styles/utilStyles";
 export const StyledContainerModal = styled.div`
   ${flex()};
   background-color: ${(props) => props.theme.colors.oscuro};
-
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   ${flex()};
@@ -15,8 +14,7 @@ export const StyledContainerModal = styled.div`
 `;
 export const StyledMidContainerModal = styled.div`
   position: relative;
-  ${flex()}
-  width: min(600px, 90vw);
+  ${flex()};
   margin: 0 auto;
   & > span {
     position: absolute;
@@ -32,7 +30,7 @@ export const StyledMidContainerModal = styled.div`
     padding: 5px;
   }
   img {
-    max-width: 600px;
+    max-width: 100%;
     max-height: 80vh;
   }
 `;

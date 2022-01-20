@@ -17,7 +17,6 @@ const ListOfCitas = () => {
     };
 
     cargandoCitas();
-    // obtenerBarberos();
   }, []);
 
   return loadingCitas ? (
@@ -26,9 +25,11 @@ const ListOfCitas = () => {
     <>
       <h2>Mis citas</h2>
       <ContainerCitas>
-        {citas?.map((cita) => (
-          <Cita key={cita._id} cita={cita} />
-        ))}
+        {citas?.length ? (
+          citas?.map((cita) => <Cita key={cita._id} cita={cita} />)
+        ) : (
+          <p>Aún no has agregado citas.</p>
+        )}
       </ContainerCitas>
     </>
   );
