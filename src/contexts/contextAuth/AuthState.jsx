@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useReducer } from "react";
 import Swal from "sweetalert2";
 
 import types from "../../types/types";
-import authReducer from "./AuthReducer";
+import authReducer from "./authReducer";
 import contextAuth from "./ContextAuth";
 import { fetchSinToken, fetchToken } from "../../helpers/peticiones";
 import {
