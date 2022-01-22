@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef, useState } from "react";
+
 import contextAuth from "../../../contexts/contextAuth/ContextAuth";
 import ButtonSettings from "./ButtonSettings";
 import { ContainerSettingsStyled, InputNameStyled } from "./styles";
@@ -20,6 +21,7 @@ const ContainerSettings = () => {
     setEditando(false);
     await editarUser({ nombre: inputName.current.value });
   };
+
   const handleBlur = () => {
     if (!editando) return;
     inputName.current.value = nombre;

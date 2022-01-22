@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 import Spinner from "../Spinner/Spinner";
@@ -11,12 +12,12 @@ import { StyledContainerProfileBarbero } from "./styles";
 
 const ProfileBarbero = () => {
   const [loading, setLoading] = useState(false);
+  const [currentBarbero, setCurrentBarbero] = useState(null);
   const { getBarberos, barberos } = useContext(contextUsers);
   const {
     user,
     user: { id: userId, type },
   } = useContext(contextAuth);
-  const [currentBarbero, setCurrentBarbero] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
 

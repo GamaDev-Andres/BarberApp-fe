@@ -26,11 +26,11 @@ const UsersState = ({ children }) => {
     const url = getUrlBarberos();
     const res = await fetchToken(url);
     const resjson = await res.json();
+
     if (!resjson.ok) {
       await Swal.fire("error", resjson.msg, "error");
       throw new Error(resjson.msg);
     }
-    console.log("update barberos");
     dispatch({ type: types.userSetBarberos, payload: resjson.empleados });
   }, []);
 

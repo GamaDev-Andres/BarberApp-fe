@@ -11,7 +11,7 @@ const CitasUsers = React.lazy(() =>
   import("../components/CitasUsers/CitasUsers")
 );
 const PageNotFound = React.lazy(() =>
-  import("../components/pageNotFound/PageNotFound")
+  import("../components/PageNotFound/PageNotFound")
 );
 
 const HomePresentation = React.lazy(() =>

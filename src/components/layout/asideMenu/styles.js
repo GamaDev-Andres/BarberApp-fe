@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
+
 import { flex } from "../../../styles/utilStyles";
 import { ButtonMenu } from "../headerHome/styles";
 
@@ -11,19 +12,14 @@ export const StyledAside = styled.aside`
   z-index: 9999;
   color: ${(props) => props.theme.colors.claro};
   transition: transform 0.3s ease-out;
-  /* transition: visibility 0.3s ease-out; */
-  /* visibility: hidden; */
 
   ${(props) =>
     props.openAside
       ? css`
           transform: translateX(0%);
-          /* z-index: 9999; */
-          /* visibility: visible; */
         `
       : css`
           transform: translateX(-100%);
-          /* visibility: hidden; */
         `}
   width: min(400px, 90%);
   background-color: ${(props) => props.theme.colors.azul};

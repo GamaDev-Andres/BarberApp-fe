@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import Spinner from "../Spinner/Spinner";
 import Cita from "./Cita";
@@ -7,6 +8,7 @@ import { ContainerCitas } from "./styles";
 const ListOfCitas = () => {
   const [loadingCitas, setLoadingCitas] = useState(false);
   const { getCitas, citas } = useContext(contextCitas);
+
   useEffect(() => {
     const cargandoCitas = async () => {
       setLoadingCitas(true);

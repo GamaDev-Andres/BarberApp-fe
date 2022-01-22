@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+
 import { validateSesion } from "../../helpers/validateForm";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { MessageError } from "../Register/styles";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
-import { useContext, useState } from "react";
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import { ContainerFormLogin, ParrafoAvisoRegister } from "../Login/styles";
+
 export const FormAdmin = ({ setFormAdmin, setIsEmpleado }) => {
   const {
     reset,
@@ -15,6 +17,7 @@ export const FormAdmin = ({ setFormAdmin, setIsEmpleado }) => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const { validarAdmin } = useContext(contextAuth);
+
   const mySubmit = async (data) => {
     setLoading(true);
     const isValid = await validarAdmin(data);
@@ -28,6 +31,7 @@ export const FormAdmin = ({ setFormAdmin, setIsEmpleado }) => {
 
     reset();
   };
+
   return (
     <ContainerFormLogin>
       <form onSubmit={handleSubmit(mySubmit)}>

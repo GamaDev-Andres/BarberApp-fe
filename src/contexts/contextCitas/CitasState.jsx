@@ -36,6 +36,7 @@ const CitasState = ({ children }) => {
       console.log(error);
     }
   }, []);
+
   const getCitas = useCallback(async () => {
     const url = getUrlCitas();
     try {
@@ -50,6 +51,7 @@ const CitasState = ({ children }) => {
       console.log(error);
     }
   }, []);
+
   const deleteCita = useCallback(async (id) => {
     const url = getUrlDeleteCita(id);
     try {

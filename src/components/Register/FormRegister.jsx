@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { ParrafoAvisoRegister } from "../Login/styles";
 import { ContainerFormRegister, MessageError } from "./styles";
@@ -19,6 +20,7 @@ const FormRegister = ({ isEmpleado }) => {
   const password = useRef({});
   const [loading, setLoading] = useState(false);
   const { startRegister } = useContext(contextAuth);
+
   password.current = watch("password", "");
 
   const mySubmit = async (data) => {

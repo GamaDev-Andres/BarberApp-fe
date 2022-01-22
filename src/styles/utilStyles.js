@@ -38,7 +38,7 @@ export const grid = (columns = 1) => {
 };
 export const ContainerInput = styled.div`
   ${flex("column", "center", "flex-start")};
-  gap: 10px;
+  gap: 5px;
   width: 100%;
   label {
     font-size: 12px;

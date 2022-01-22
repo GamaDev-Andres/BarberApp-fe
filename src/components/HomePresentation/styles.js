@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { flex, grid, media } from "../../styles/utilStyles";
+
+import { flex, grid } from "../../styles/utilStyles";
 import imgPresentation from "../../../assets/img_fondo.jpg";
 
 export const ContainerHomePresentacion = styled.main`

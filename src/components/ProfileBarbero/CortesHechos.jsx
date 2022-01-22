@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import Corte from "./Corte";
 import { StyledContainerCortes } from "./styles";
 import Carousel from "react-bootstrap/Carousel";
@@ -19,19 +20,22 @@ const CortesHechos = ({ currentBarbero }) => {
     handleOpen: handleOpenWidget,
   } = useUpdateCloudinary(true);
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
   useEffect(() => {
     if (data) {
       const cortesObj = { cortes: [...data] };
-      editarUser(cortesObj).then((res) => console.log("cortes subidos"));
+      editarUser(cortesObj)
+        .then((res) => console.log("cortes subidos"))
+        .catch((error) => console.log(error));
     }
   }, [data]);
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   const handleClickAddFotos = () => {
     handleOpenWidget();
   };
+
   return (
     <StyledContainerCortes>
       <h2>Cortes</h2>

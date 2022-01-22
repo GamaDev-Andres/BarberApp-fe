@@ -1,6 +1,8 @@
 import styled from "styled-components";
+
 import imgFondo from "../../../assets/imgbackground.jpg";
 import { grid, media } from "../../styles/utilStyles";
+
 export const Container = styled.div`
   background-color: ${(props) => props.theme.colors.fondo};
   min-height: 100vh;

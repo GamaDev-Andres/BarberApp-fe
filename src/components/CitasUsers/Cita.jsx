@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "../../styles/utilStyles";
 import {
   ContainerCita,
@@ -7,14 +9,13 @@ import {
 } from "./styles";
 import userEmpty from "../../../assets/unnamed.png";
 import ActionsCitas from "./ActionsCitas";
-import { useNavigate } from "react-router-dom";
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 const Cita = ({ cita }) => {
   const fecha = new Date(cita.fecha).toLocaleString();
   const Expiracion = new Date(cita.fecha).getTime() - new Date().getTime();
   const noDisponible = cita.estado === "rechazada" || Expiracion < 0;
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const {
     user: { type },
     user: { perfil },

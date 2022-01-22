@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import { StyledItemAction } from "../layout/ActionsMenu/styles";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
@@ -7,11 +8,13 @@ import SpinnerSmall from "../Spinner/SpinnerSmall";
 const ItemsActionsBarbero = ({ cita, handleOpen }) => {
   const [loading, setLoading] = useState(false);
   const { deleteCita, editCita } = useContext(contextCitas);
+
   useEffect(() => {
     return () => {
       setLoading(false);
     };
   }, []);
+
   const handleDelete = async () => {
     if (loading) return;
     try {

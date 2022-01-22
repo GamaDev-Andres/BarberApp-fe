@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { flex, media } from "../../styles/utilStyles";
 
 export const StyledContainerProfileBarbero = styled.main`

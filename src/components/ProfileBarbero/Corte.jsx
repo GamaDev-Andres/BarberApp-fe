@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-import { useCallback } from "react";
-import { useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
+
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import { ModalPortal } from "../Modal/Modal";
 import { StyledContainerCorte } from "./styles";
@@ -53,6 +52,7 @@ const Corte = ({ corte }) => {
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
   }, []);
+
   return (
     <StyledContainerCorte>
       <img onClick={handleOpenModalImg} src={corte} alt="imagen corte" />

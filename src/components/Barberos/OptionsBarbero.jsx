@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import contextCitas from "../../contexts/contextCitas/contextCitas";
 import ActionsMenu from "../layout/ActionsMenu/ActionsMenu";
 import { StyledItemAction } from "../layout/ActionsMenu/styles";
@@ -10,6 +11,7 @@ const OptionsBarbero = ({ barbero }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { selectBarbero } = useContext(contextCitas);
+
   useEffect(() => {
     return () => {
       setLoading(false);
@@ -21,14 +23,14 @@ const OptionsBarbero = ({ barbero }) => {
   }, []);
 
   const handleAgendarCita = () => {
-    console.log("agendando cita");
     selectBarbero(barbero._id);
     navigate("/newcita");
   };
+
   const handleRedirectProfile = () => {
-    console.log("redirect perfil");
     navigate(`/barberos/${barbero._id}`);
   };
+
   return (
     <>
       <ActionsMenu open={open} handleOpen={handleOpen}>

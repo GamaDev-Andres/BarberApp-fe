@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+
 import { StyledContainerActions, StyledOptionsActions } from "./styles";
 
 const ActionsMenu = ({ children, handleOpen, open }) => {

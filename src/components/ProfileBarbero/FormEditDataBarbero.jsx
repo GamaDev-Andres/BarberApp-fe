@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import SpinnerSmall from "../Spinner/SpinnerSmall";
@@ -23,9 +24,11 @@ const FormEditDataBarbero = ({ handleCloseModal }) => {
     setLoading(false);
     handleCloseModal("formulario");
   };
+
   const handleChange = (e) => {
     setObjForm({ ...objForm, [e.target.name]: e.target.value });
   };
+
   useEffect(() => {
     return () => {
       setLoading(false);

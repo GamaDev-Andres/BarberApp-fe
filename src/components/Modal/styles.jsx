@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { flex } from "../../styles/utilStyles";
 
 export const StyledContainerModal = styled.div`
@@ -6,7 +7,6 @@ export const StyledContainerModal = styled.div`
   background-color: ${(props) => props.theme.colors.oscuro};
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  ${flex()};
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -26,7 +26,6 @@ export const StyledMidContainerModal = styled.div`
     &:hover {
       color: ${(props) => props.theme.colors.rojo};
     }
-
     padding: 5px;
   }
   img {

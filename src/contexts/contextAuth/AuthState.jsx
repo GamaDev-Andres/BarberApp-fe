@@ -37,6 +37,7 @@ const AuthState = ({ children }) => {
     const url = getUrlRefresh();
     const res = await fetchToken(url);
     const resjson = await res.json();
+
     if (!resjson.ok) {
       if (localStorage.getItem("token")) {
         await Swal.fire(
@@ -101,10 +102,12 @@ const AuthState = ({ children }) => {
       console.log(error);
     }
   }, []);
+
   const signOutSesion = useCallback(() => {
     localStorage.removeItem("token");
     dispatch({ type: types.authLogout });
   }, []);
+
   const validarAdmin = useCallback(async (data) => {
     const url = getUrlValidAdmin();
     const res = await fetchSinToken(url, data, "POST");
@@ -116,6 +119,7 @@ const AuthState = ({ children }) => {
       return true;
     }
   }, []);
+
   const editarUser = useCallback(
     async (data, id) => {
       let url;
@@ -136,7 +140,6 @@ const AuthState = ({ children }) => {
           return;
         }
         if (!id) {
-          console.log("resjson", resjson);
           dispatch({ type: types.userEdit, payload: resjson.user });
         }
         await Swal.fire("Listo !", "edicion exitosa!", "success");
@@ -144,8 +147,6 @@ const AuthState = ({ children }) => {
         console.log(error);
       }
     },
-    // NOTA : recuerda que si utilizas el state en tus funciones , cuando cambie el token o user,
-    //cambiara el state , por lo tanto deberia volver a memorizarse la funcion
     [user]
   );
   const deleteCorte = useCallback(

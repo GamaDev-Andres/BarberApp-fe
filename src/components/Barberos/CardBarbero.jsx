@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../styles/utilStyles";
+
 import UserEmpty from "../../../assets/unnamed.png";
 import {
   StyledCardBarbero,
@@ -27,7 +27,7 @@ const CardBarbero = ({ barbero }) => {
       </StyledContainerFotoBarbero>
       <StyledContainerDescriptionBarbero>
         <div>
-          <h4>Descripcion:</h4>
+          <h4>Descripción:</h4>
           <span>{barbero.perfil?.descripcion || "Sin descripcion"}</span>
         </div>
       </StyledContainerDescriptionBarbero>

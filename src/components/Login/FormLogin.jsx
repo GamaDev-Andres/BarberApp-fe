@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+
 import contextAuth from "../../contexts/contextAuth/ContextAuth";
 import { validateSesion } from "../../helpers/validateForm";
 import { Button, ContainerInput } from "../../styles/utilStyles";
 import { MessageError } from "../Register/styles";
 import { ContainerFormLogin, ParrafoAvisoRegister } from "./styles";
 import SpinnerSmall from "../../components/Spinner/SpinnerSmall";
+
 export const FormLogin = ({ isEmpleado }) => {
   const {
     reset,
@@ -16,6 +18,7 @@ export const FormLogin = ({ isEmpleado }) => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const { startLogin } = useContext(contextAuth);
+
   const mySubmit = async (data) => {
     const type = isEmpleado ? "empleado" : "user";
     setLoading(true);

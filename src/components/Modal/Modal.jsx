@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom";
+
 import { StyledContainerModal, StyledMidContainerModal } from "./styles";
+
 export const ModalPortal = ({ children, isOpen, closeModal }) => {
   return ReactDOM.createPortal(
     <StyledContainerModal

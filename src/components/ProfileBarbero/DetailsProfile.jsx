@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
+
 import {
   StyledContainerDescriptionProfile,
   StyledContainerDetailsProfile,
@@ -30,6 +31,15 @@ const DetailsProfile = ({ currentBarbero }) => {
     handleOpen: handleOpenWidget,
   } = useUpdateCloudinary(false);
 
+  useEffect(() => {
+    if (data) {
+      const objPerfil = { perfil: { ...perfil, foto: data[0] } };
+      editarUser(objPerfil).then((res) => {
+        console.log("subida a databasae");
+      });
+    }
+  }, [data]);
+
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -40,18 +50,11 @@ const DetailsProfile = ({ currentBarbero }) => {
   const handleOpenModal = (type) => {
     setIsOpenModal({ ...isOpenModal, [type]: true });
   };
+
   const handleCloseModal = useCallback((type) => {
     setIsOpenModal({ ...isOpenModal, [type]: false });
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      const objPerfil = { perfil: { ...perfil, foto: data[0] } };
-      editarUser(objPerfil).then((res) => {
-        console.log("subida a databasae");
-      });
-    }
-  }, [data]);
   return (
     <StyledContainerDetailsProfile>
       <StyledContainerImgProfile>

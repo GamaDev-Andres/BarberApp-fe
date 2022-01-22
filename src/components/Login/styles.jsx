@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { flex, media } from "../../styles/utilStyles";
 
 export const ContainerLogin = styled.div`
@@ -29,7 +30,7 @@ export const ContainerFormLogin = styled.div`
   width: 100%;
   form {
     ${flex("column", "center", "stretch")};
-    gap: 1rem;
+    gap: 10px;
   }
 `;
 export const ParrafoAvisoRegister = styled.p`
