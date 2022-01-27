@@ -1,5 +1,5 @@
 import React, { Suspense, useContext } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -39,7 +39,7 @@ const AppRouter = () => {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route element={<PrivateRoute />}>
@@ -65,7 +65,7 @@ const AppRouter = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
