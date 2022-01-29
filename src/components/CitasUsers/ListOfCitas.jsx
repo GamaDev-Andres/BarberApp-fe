@@ -30,7 +30,7 @@ const ListOfCitas = () => {
         {citas?.length ? (
           citas?.map((cita) => <Cita key={cita._id} cita={cita} />)
         ) : (
-          <p>Aún no has agregado citas.</p>
+          <p>Aún no tienes citas.</p>
         )}
       </ContainerCitas>
     </>

@@ -1,16 +1,10 @@
-import React, { useCallback, useContext, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useCallback, useReducer } from "react";
 import Swal from "sweetalert2";
 
-import {
-  getUrlBarberos,
-  getUrlUpdateCliente,
-  getUrlUpdateEmpleado,
-} from "../../helpers/getUrls";
+import { getUrlBarberos } from "../../helpers/getUrls";
 import { fetchToken } from "../../helpers/peticiones";
 import types from "../../types/types";
-import authReducer from "../contextAuth/authReducer";
-import contextAuth from "../contextAuth/ContextAuth";
+
 import contextUsers from "./contextUsers";
 import usersReducer from "./usersReducer";
 
@@ -33,9 +27,12 @@ const UsersState = ({ children }) => {
     }
     dispatch({ type: types.userSetBarberos, payload: resjson.empleados });
   }, []);
+  const resetBarberos = useCallback(() => {
+    dispatch({ type: types.userResetBarberos });
+  }, []);
 
   return (
-    <contextUsers.Provider value={{ getBarberos, barberos }}>
+    <contextUsers.Provider value={{ getBarberos, resetBarberos, barberos }}>
       {children}
     </contextUsers.Provider>
   );

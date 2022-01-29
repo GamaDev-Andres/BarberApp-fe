@@ -6,6 +6,7 @@ const types = {
   userEditNombre: "editando nombre cliente o barbero",
   userEdit: "editando cliente o barbero",
   userSetBarberos: "seteando barberos",
+  userResetBarberos: "reseteando barberos",
 
   citasGetCitas: "get citas",
   citasDeleteCita: "delete cita",

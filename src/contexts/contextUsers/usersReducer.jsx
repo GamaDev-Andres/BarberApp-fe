@@ -7,6 +7,11 @@ const usersReducer = (state, action) => {
         ...state,
         barberos: action.payload,
       };
+    case types.userResetBarberos:
+      return {
+        ...state,
+        barberos: null,
+      };
 
     default:
       return state;

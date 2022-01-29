@@ -47,6 +47,11 @@ export const StyledContainerFotoBarbero = styled.div`
   }
 `;
 export const StyledContainerDescriptionBarbero = styled.div`
+  height: 100%;
+  border: 1px solid ${(props) => props.theme.colors.azul};
+  padding: 0.5rem;
+  color: ${(props) => props.theme.colors.oscuro};
+  background-color: white;
   h4 {
     text-align: left;
     color: ${(props) => props.theme.colors.azul};
@@ -55,9 +60,4 @@ export const StyledContainerDescriptionBarbero = styled.div`
     font-size: 13px;
   }
   border-radius: 10px;
-
-  border: 1px solid ${(props) => props.theme.colors.azul};
-  padding: 0.5rem;
-  color: ${(props) => props.theme.colors.oscuro};
-  background-color: white;
 `;
