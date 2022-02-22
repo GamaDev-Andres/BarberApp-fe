@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import contextCitas from "../../contexts/contextCitas/contextCitas";
 import contextUsers from "../../contexts/contextUsers/contextUsers";
 
 import AsideMenu from "../layout/asideMenu/AsideMenu";
@@ -10,9 +11,11 @@ import { ContainerHome } from "./styles";
 const Home = () => {
   const [openAside, setOpenAside] = useState(false);
   const { resetBarberos } = useContext(contextUsers);
+  const { resetCitas } = useContext(contextCitas);
   useEffect(() => {
     return () => {
       resetBarberos();
+      resetCitas();
     };
   }, []);
   return (

@@ -92,6 +92,9 @@ const CitasState = ({ children }) => {
   const selectBarbero = useCallback((data) => {
     dispatch({ type: types.citasSelectBarbero, payload: data });
   }, []);
+  const resetCitas = useCallback(() => {
+    dispatch({ type: types.citasReset });
+  }, []);
 
   return (
     <contextCitas.Provider
@@ -103,6 +106,7 @@ const CitasState = ({ children }) => {
         deleteCita,
         editCita,
         selectBarbero,
+        resetCitas,
       }}
     >
       {children}

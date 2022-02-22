@@ -17,6 +17,11 @@ export const citasReducer = (state, action) => {
         ...state,
         barberSelected: action.payload,
       };
+    case types.citasReset:
+      return {
+        citas: null,
+        barberSelected: null,
+      };
     default:
       return state;
   }

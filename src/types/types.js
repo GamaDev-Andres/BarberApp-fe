@@ -11,5 +11,6 @@ const types = {
   citasGetCitas: "get citas",
   citasDeleteCita: "delete cita",
   citasSelectBarbero: "select barbero previo",
+  citasReset: "resetear citas",
 };
 export default types;
